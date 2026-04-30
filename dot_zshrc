@@ -25,8 +25,6 @@ alias ls='eza --icons --group-directories-first --git --header --octal-permissio
 alias sp='spotify_player'
 alias z='zeditor'
 
-
-
 # --- 5. SSH ---
 # If we're in Ghostty, tell remote servers we're just a standard xterm
 if [[ "$TERM" == *ghostty* ]]; then
@@ -40,7 +38,6 @@ alias pmb='ssh protonmail-bridge@192.168.2.211'
 alias tech='ssh technitium@192.168.2.212'
 alias tailsc='ssh tailscale@192.168.2.213'
 alias dns='ssh dns@192.168.2.243'
-
 
 # --- 6. Eye Candy ---
 # Only run fastfetch if the session is interactive

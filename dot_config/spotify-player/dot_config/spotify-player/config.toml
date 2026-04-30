@@ -1,0 +1,12 @@
+# --- General ---
+device_type = "computer"
+
+# --- Cover ---
+enable_cover_image_cache = true
+cover_img_scale = 1.0
+cover_img_length = 9
+cover_img_width = 5.
+
+# --- Theme ---
+[[themes]]
+name = "AdwaitaSnazzy"

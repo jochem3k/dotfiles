@@ -1,0 +1,11 @@
+[[themes]]
+name = "AdwaitaSnazzy"
+[themes.palette]
+background = "#1e1e1e"
+foreground = "#ffffff"
+selection_background = "#3584e4"
+selection_foreground = "#ffffff"
+bright_black = "#9a9996"
+bright_green = "#5af78e"
+bright_magenta = "#ff6ac1"
+bright_red = "#ff5c57"

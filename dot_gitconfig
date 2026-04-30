@@ -1,0 +1,7 @@
+[user]
+	name = jochem
+	email = jochemschouten@proton.me
+[credential]
+	helper = libsecret
+[credential "https://git.shibelab.xyz"]
+	provider = generic

@@ -3,7 +3,7 @@ export ZSH="$HOME/.oh-my-zsh"
 export EDITOR="fresh"
 export VISUAL="fresh"
 export BAT_THEME="base16"
-export LS_COLORS="$(vivid generate nord)"
+export LS_COLORS="$(vivid generate snazzy)"
 
 # --- 2. Oh My Zsh Configuration ---
 ZSH_THEME="robbyrussell"

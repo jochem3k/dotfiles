@@ -8,7 +8,7 @@ export LS_COLORS="$(vivid generate nord)"
 # --- 2. Oh My Zsh Configuration ---
 ZSH_THEME="robbyrussell"
 ENABLE_CORRECTION="true"
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions) # Added two essential plugins
+plugins=(git docker zsh-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 

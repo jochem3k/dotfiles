@@ -1,7 +1,0 @@
-[[keymaps]]
-command = { VolumeChange = { offset = 5 } }
-key_sequence = "="
-
-[[keymaps]]
-command = { VolumeChange = { offset = -5 } }
-key_sequence = "-"

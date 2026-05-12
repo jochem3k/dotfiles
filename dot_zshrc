@@ -21,7 +21,11 @@ alias f='fresh'
 alias cat='bat'
 alias df='duf'
 alias du='dust'
-alias ls='eza --icons --group-directories-first --git --header --octal-permissions --color=auto'
+alias ls='eza -alh --icons --group-directories-first --git --header --octal-permissions --color=auto'
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -I --preserve-root'
+alias mkdir='mkdir -p'
 alias z='zeditor'
 
 # --- 5. SSH ---

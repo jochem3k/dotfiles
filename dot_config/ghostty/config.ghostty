@@ -8,9 +8,7 @@ font-family = Adwaita Mono
 
 # Color theme name or path
 # Options: String
-theme = Adwaita Dark
-#theme = Catppuccin Macchiato
-#theme = Snazzy
+theme = dankcolors
 
 # Window height in cells
 # Options: Number

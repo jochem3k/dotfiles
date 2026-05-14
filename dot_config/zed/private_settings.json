@@ -22,8 +22,8 @@
   "agent": {
     "dock": "right",
     "default_model": {
-      "provider": "google",
-      "model": "gemini-3.1-pro-preview",
+      "provider": "openrouter",
+      "model": "~google/gemini-flash-latest",
       "enable_thinking": true
     },
     "favorite_models": [],
@@ -44,7 +44,7 @@
   "buffer_font_size": 15,
   "theme": {
     "mode": "system",
-    "light": "One Light",
-    "dark": "Adwaita Dark",
+    "light": "DankShell Light",
+    "dark": "DankShell Dark",
   },
 }

@@ -4,7 +4,7 @@
 
 # Font family to use
 # Options: String: font name
-font-family = Adwaita Mono
+font-family = Adwaita Mono Nerd
 
 # Color theme name or path
 # Options: String

@@ -1,7 +1,0 @@
--- 1. Full Window Borders (Catppuccin-friendly rounded edges)
-require("full-border"):setup({
-    type = ui.Border.ROUNDED,
-})
-
--- 2. Git Status Layer Integration
-require("git"):setup()

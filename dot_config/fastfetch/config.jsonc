@@ -1,0 +1,85 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "small",
+    "padding": {
+      "top": 2,
+      "left": 3
+    }
+  },
+  "display": {
+    // We use a clean chevron with explicit spacing so it never glues to values
+    "separator": " 󰄾  ",
+    "key": {
+      // Setting width to 0 disables Fastfetch's broken auto-padding calculation
+      "width": 0
+    }
+  },
+  "modules": [
+    "title",
+    {
+      "type": "custom",
+      "format": "┌──────────────────────────────────────────────┐"
+    },
+    {
+      "type": "os",
+      "key": "  󰣇 OS        ",
+      "keyColor": "bright_blue"
+    },
+    {
+      "type": "kernel",
+      "key": "  󰒋 Kernel    ",
+      "keyColor": "bright_blue"
+    },
+    {
+      "type": "uptime",
+      "key": "  󰅐 Uptime    ",
+      "keyColor": "bright_blue"
+    },
+    {
+      "type": "packages",
+      "key": "  󰏖 Packages  ",
+      "keyColor": "bright_blue"
+    },
+    {
+      "type": "shell",
+      "key": "   Shell     ",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "wm",
+      "key": "  󱂬 WM        ",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "terminal",
+      "key": "  󰆍 Terminal  ",
+      "keyColor": "cyan"
+    },
+    {
+      "type": "cpu",
+      "key": "  󰻠 CPU       ",
+      "keyColor": "bright_yellow"
+    },
+    {
+      "type": "gpu",
+      "key": "  󰘚 GPU       ",
+      "keyColor": "bright_yellow"
+    },
+    {
+      "type": "memory",
+      "key": "  󰍛 Memory    ",
+      "keyColor": "bright_yellow"
+    },
+    {
+      "type": "custom",
+      "format": "└──────────────────────────────────────────────┘"
+    },
+    "break",
+    {
+      "type": "colors",
+      "paddingLeft": 2,
+      "symbol": "󰮯"
+    }
+  ]
+}

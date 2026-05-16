@@ -129,7 +129,9 @@ binds {
     Mod+T hotkey-overlay-title="Open Terminal" { spawn "ghostty"; }
     Super+B hotkey-overlay-title="Open Browser" { spawn "zen-browser"; }
     Super+E hotkey-overlay-title="Open Nautilus" { spawn "nautilus"; }
+    Super+M hotkey-overlay-title="Open Spotify" { spawn "spotify"; }
     Super+Return hotkey-overlay-title="Open Terminal" { spawn "ghostty"; }
+    Super+S hotkey-overlay-title="Open Steam" { spawn "com.valvesoftware.Steam"; }
     Super+Z hotkey-overlay-title="Open Zed" { spawn "zeditor"; }
     Mod+D repeat=false { toggle-overview; }
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }

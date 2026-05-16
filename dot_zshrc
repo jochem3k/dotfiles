@@ -13,7 +13,21 @@ plugins=(git docker zsh-autosuggestions zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 # --- 3. Tool Initialization ---
+# zoxide
 eval "$(zoxide init zsh --cmd cd)"
+
+# yazi
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+# spicetify
+export PATH=$PATH:/home/jochem/.spicetify
 
 # --- 4. Aliases ---
 # Core Replacements

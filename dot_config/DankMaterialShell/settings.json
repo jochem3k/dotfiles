@@ -1,12 +1,16 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "registry",
-  "customThemeFile": "/home/jochem/.config/DankMaterialShell/themes/catppuccin/theme.json",
+  "customThemeFile": "/home/jochem/.config/DankMaterialShell/themes/rosePine/theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {
         "flavor": "mocha",
-        "accent": "rosewater"
+        "accent": "lavender"
+      },
+      "light": {
+        "flavor": "latte",
+        "accent": "lavender"
       }
     },
     "deepdark": {
@@ -15,11 +19,11 @@
         "accent": "purple"
       }
     },
-    "gruvboxMaterial": "soft",
+    "gruvboxMaterial": "hard",
     "gruvboxMulti": {
       "dark": {
         "flavor": "material-hard-dark",
-        "accent": "purple"
+        "accent": "green"
       }
     },
     "rosePine": "rosePine",
@@ -29,9 +33,16 @@
         "accent": "blue"
       }
     },
-    "flexoki": "blue"
+    "flexoki": "blue",
+    "amoledBlack": {
+      "dark": {
+        "flavor": "black",
+        "accent": "blue"
+      }
+    },
+    "peaceAndQuiet": "cyan"
   },
-  "matugenScheme": "scheme-neutral",
+  "matugenScheme": "scheme-monochrome",
   "runUserMatugenTemplates": true,
   "matugenTargetMonitor": "",
   "popupTransparency": 1,
@@ -72,7 +83,7 @@
   "blurBorderOpacity": 0.35,
   "wallpaperFillMode": "Fill",
   "blurredWallpaperLayer": false,
-  "blurWallpaperOnOverview": false,
+  "blurWallpaperOnOverview": true,
   "showLauncherButton": true,
   "showWorkspaceSwitcher": true,
   "showFocusedWindow": true,
@@ -311,7 +322,7 @@
   "matugenTemplateKitty": true,
   "matugenTemplateFoot": true,
   "matugenTemplateAlacritty": true,
-  "matugenTemplateNeovim": false,
+  "matugenTemplateNeovim": true,
   "matugenTemplateWezterm": true,
   "matugenTemplateDgop": true,
   "matugenTemplateKcolorscheme": true,
@@ -363,7 +374,7 @@
   "u2fMode": "or",
   "lockScreenActiveMonitor": "all",
   "lockScreenInactiveColor": "#000000",
-  "lockScreenNotificationMode": 0,
+  "lockScreenNotificationMode": 3,
   "hideBrightnessSlider": false,
   "notificationTimeoutLow": 5000,
   "notificationTimeoutNormal": 5000,
@@ -506,7 +517,7 @@
       "autoHide": false,
       "autoHideDelay": 250,
       "showOnWindowsOpen": false,
-      "openOnOverview": false,
+      "openOnOverview": true,
       "visible": true,
       "popupGapsAuto": true,
       "popupGapsManual": 4,

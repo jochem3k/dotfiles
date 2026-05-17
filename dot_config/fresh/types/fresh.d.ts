@@ -116,6 +116,18 @@ type TextPropertyEntry = {
 	* Optional sub-range styling within this entry
 	*/
 	inlineOverlays?: Array<InlineOverlay>;
+	/**
+	* See `TextPropertyEntry::pad_to_chars`.
+	*/
+	padToChars?: number;
+	/**
+	* See `TextPropertyEntry::truncate_to_chars`.
+	*/
+	truncateToChars?: number;
+	/**
+	* See `TextPropertyEntry::segments`.
+	*/
+	segments?: Array<StyledSegment>;
 };
 type TsCompositeLayoutConfig = {
 	/**
@@ -420,6 +432,20 @@ type BufferInfo = {
 	*/
 	splits: number[];
 };
+type WindowInfo = {
+	/**
+	* Stable session id. The base session is always `1`.
+	*/
+	id: number;
+	/**
+	* User-visible label (defaults to root basename).
+	*/
+	label: string;
+	/**
+	* Absolute project root.
+	*/
+	root: string;
+};
 type JsDiagnostic = {
 	/**
 	* Document URI
@@ -499,6 +525,17 @@ type ActionPopupOptions = {
 	* Action buttons to display
 	*/
 	actions: Array<TsActionPopupAction>;
+};
+type TsLspMenuItem = {
+	/**
+	* Stable identifier used as the `action_id` in the resulting
+	* `action_popup_result` event (prefixed by `{plugin_id}|`).
+	*/
+	id: string;
+	/**
+	* Display label shown in the popup row.
+	*/
+	label: string;
 };
 type FileExplorerDecoration = {
 	/**
@@ -582,6 +619,16 @@ type CreateTerminalOptions = {
 	* across editor restarts.
 	*/
 	persistent?: boolean;
+	/**
+	* Optional session id to attach the new terminal buffer to.
+	* Defaults to the active session at creation time. Setting this
+	* lets Orchestrator and similar plugins spawn a terminal *into* an
+	* inactive session (e.g. an agent in a worktree the user hasn't
+	* dived into yet). The terminal's split is created in that
+	* session's stashed split tree; the buffer is attached to the
+	* target session's membership set rather than the active one's.
+	*/
+	windowId?: WindowId;
 };
 type CursorInfo = {
 	/**
@@ -635,11 +682,11 @@ type OverlayOptions = {
 type OverlayColorSpec = [number, number, number] | string;
 type InlineOverlay = {
 	/**
-	* Start byte offset within the entry's text
+	* Start offset within the entry's text. See `unit`.
 	*/
 	start: number;
 	/**
-	* End byte offset within the entry's text (exclusive)
+	* End offset within the entry's text (exclusive). See `unit`.
 	*/
 	end: number;
 	/**
@@ -650,6 +697,29 @@ type InlineOverlay = {
 	* Optional properties for this sub-range (e.g., click target metadata)
 	*/
 	properties?: Record<string, any>;
+	/**
+	* Unit for `start` / `end`. Defaults to `byte`.
+	*/
+	unit?: OffsetUnit;
+};
+type OffsetUnit = "byte" | "char";
+type StyledSegment = {
+	/**
+	* Verbatim text for this segment.
+	*/
+	text: string;
+	/**
+	* When set, the host emits an `InlineOverlay` covering this
+	* segment's text in the final entry.
+	*/
+	style?: Partial<OverlayOptions>;
+	/**
+	* Additional overlays inside this segment. Offsets are in
+	* the overlay's own `unit`, relative to the segment's start
+	* (NOT the final entry text); the host shifts them by the
+	* segment's position during concatenation.
+	*/
+	overlays?: Array<InlineOverlay>;
 };
 type GrammarInfoSnapshot = {
 	/**
@@ -682,6 +752,296 @@ type PluginAnimationKind = {
 	durationMs: number;
 	delayMs: number;
 };
+type HintEntry = {
+	/**
+	* The key chord, e.g. `"Tab"`, `"Alt+P"`, `"Esc"`.
+	*/
+	keys: string;
+	/**
+	* The human-readable label for the action.
+	*/
+	label: string;
+};
+type ButtonKind = "normal" | "primary" | "danger";
+type TreeNode = {
+	/**
+	* The pre-rendered row content (text + per-row overlays).
+	* The host renders this verbatim after the indent + disclosure
+	* prefix; plugin overlays are byte-shifted by the prefix
+	* length.
+	*/
+	text: TextPropertyEntry;
+	/**
+	* 0-based depth — controls leading indent (`depth * 2` spaces).
+	*/
+	depth: number;
+	/**
+	* When true, render a disclosure glyph (`▶` collapsed / `▼`
+	* expanded) and emit a hit area over it that fires the `expand`
+	* event. Leaf nodes (`false`) get no glyph and no expand hit;
+	* the row width occupies the full row.
+	*/
+	hasChildren: boolean;
+	/**
+	* Per-node checkbox state. Only rendered when the parent
+	* `Tree` has `checkable: true`. `None` = no checkbox glyph;
+	* `Some(true)` = `[v]`; `Some(false)` = `[ ]`. The plugin
+	* owns the truth — the host fires `widget_event { event_type:
+	* "toggle" }` and the plugin pushes the new state back via
+	* `WidgetMutation::SetCheckedKeys`.
+	*/
+	checked?: boolean | null;
+};
+type WidgetSpec = {
+	"kind": "row";
+	children: Array<WidgetSpec>;
+	key?: string | null;
+} | {
+	"kind": "col";
+	children: Array<WidgetSpec>;
+	key?: string | null;
+} | {
+	"kind": "hintBar";
+	entries: Array<HintEntry>;
+	key?: string | null;
+} | {
+	"kind": "toggle";
+	checked: boolean;
+	label: string;
+	focused: boolean;
+	key?: string | null;
+} | {
+	"kind": "button";
+	label: string;
+	focused: boolean;
+	intent: ButtonKind;
+	key?: string | null;
+} | {
+	"kind": "spacer";
+	cols: number;
+	flex: boolean;
+	key?: string | null;
+} | {
+	"kind": "list";
+	items: Array<TextPropertyEntry>;
+	itemKeys: Array<string>;
+	selectedIndex: number;
+	/**
+	* Number of rows of the panel's available height the list
+	* should occupy. Plugin computes from its viewport. The
+	* host shows up to this many items per render.
+	*/
+	visibleRows: number;
+	/**
+	* Whether `Tab` / `Shift+Tab` will land focus on this
+	* list. Defaults to `true` (lists are normal tabbable
+	* widgets). Picker-style usage typically sets this to
+	* `false` so Tab moves between the filter input and
+	* the action buttons, while Up/Down on the focused
+	* filter still forwards to the list via host smart-key
+	* dispatch.
+	*/
+	focusable: boolean;
+	key?: string | null;
+} | {
+	"kind": "tree";
+	nodes: Array<TreeNode>;
+	itemKeys: Array<string>;
+	selectedIndex: number;
+	visibleRows: number;
+	/**
+	* Initial-only set of expanded item keys. Once the widget
+	* has rendered, the host's instance-state `expanded_keys`
+	* is authoritative; updating this field on subsequent specs
+	* has no effect (use `WidgetMutation::SetExpandedKeys` to
+	* override host state).
+	*/
+	expandedKeys: Array<string>;
+	/**
+	* When true, every node with `checked: Some(_)` renders a
+	* `[v]` / `[ ]` glyph and emits a `toggle` hit area over
+	* the glyph. Click on the glyph fires `widget_event {
+	* event_type: "toggle", payload: { key, checked: <new> } }`;
+	* the plugin updates its model and pushes the new state
+	* back via `WidgetMutation::SetCheckedKeys`.
+	*/
+	checkable: boolean;
+	key?: string | null;
+} | {
+	"kind": "text";
+	/**
+	* Initial text. Spec value is read at first render only;
+	* instance state takes over thereafter.
+	*/
+	value: string;
+	/**
+	* Initial byte-offset cursor within `value`. Negative
+	* (encoded as `i32` in JSON) means "no cursor" — clamped
+	* to `[0, value.len()]` host-side.
+	*/
+	cursorByte: number;
+	/**
+	* Whether this widget has visual focus.
+	*/
+	focused: boolean;
+	/**
+	* Optional label rendered before / above the editing
+	* region. Empty = omitted.
+	*/
+	label?: string;
+	/**
+	* Placeholder shown when unfocused and `value` is empty.
+	*/
+	placeholder?: string | null;
+	/**
+	* Number of visible rows of editing region. `0` falls back
+	* to `1` (single-line). `1` = single-line behaviour;
+	* `>= 2` = multi-line behaviour. See the type-level doc
+	* for the per-mode semantics.
+	*/
+	rows: number;
+	/**
+	* Visible column width. `0` = auto-fit (single-line) or
+	* panel width (multi-line). When set, single-line
+	* head-truncates with `…` and multi-line tail-truncates
+	* per-line.
+	*/
+	fieldWidth: number;
+	/**
+	* Single-line soft cap on visible chars after the
+	* `field_width` pad. `0` = no cap. Ignored when `rows > 1`.
+	*/
+	maxVisibleChars: number;
+	/**
+	* Stretch the visible field to fill the available
+	* width of the enclosing container. Overrides
+	* `field_width` when set: the renderer computes
+	* `panel_width - label_overhead - bracket_overhead` as
+	* the effective visible width. Multi-line widgets
+	* already fill the panel width by default; this flag is
+	* most useful for single-line inputs inside a
+	* `LabeledSection` or a flexible row.
+	*/
+	fullWidth: boolean;
+	key?: string | null;
+} | {
+	"kind": "labeledSection";
+	/**
+	* Legend text printed in the top border. Empty = no
+	* legend (the top border becomes one unbroken line).
+	*/
+	label: string;
+	/**
+	* The single wrapped widget. Boxed because `WidgetSpec`
+	* is recursive.
+	*/
+	child: WidgetSpec;
+	/**
+	* When this section is a Block child of a Row, request
+	* `width_pct` percent of the row's `panel_width` instead
+	* of the equal-split default. Multiple siblings with
+	* `width_pct` set sum to ≤ 100; the remainder splits
+	* equally among siblings without an explicit width.
+	* Out-of-range values (0 or > 100) fall back to the
+	* equal-split path.
+	*/
+	widthPct?: number | null;
+	key?: string | null;
+} | {
+	"kind": "windowEmbed";
+	/**
+	* Numeric editor-window id, matching `WindowId(N).0`.
+	* `0` (or any unknown id) renders empty placeholder
+	* rows without dispatching the per-window render.
+	* `u32` rather than `u64` to keep the TS binding a
+	* plain `number`; window ids never exceed 4B in
+	* practice.
+	*/
+	windowId: number;
+	/**
+	* Number of visible rows the embed should occupy.
+	*/
+	rows: number;
+	key?: string | null;
+} | {
+	"kind": "raw";
+	entries: Array<TextPropertyEntry>;
+	key?: string | null;
+};
+type WidgetAction = {
+	"kind": "focusAdvance";
+	delta: number;
+} | {
+	"kind": "activate";
+} | {
+	"kind": "selectMove";
+	delta: number;
+} | {
+	"kind": "textInputKey";
+	key: string;
+} | {
+	"kind": "textInputChar";
+	text: string;
+} | {
+	"kind": "key";
+	key: string;
+};
+type WidgetMutation = {
+	"kind": "setValue";
+	widgetKey: string;
+	value: string;
+	cursorByte?: number | null;
+} | {
+	"kind": "setChecked";
+	widgetKey: string;
+	checked: boolean;
+} | {
+	"kind": "setSelectedIndex";
+	widgetKey: string;
+	index: number;
+} | {
+	"kind": "setItems";
+	widgetKey: string;
+	items: Array<TextPropertyEntry>;
+	itemKeys: Array<string>;
+} | {
+	"kind": "setExpandedKeys";
+	widgetKey: string;
+	keys: Array<string>;
+} | {
+	"kind": "setCheckedKeys";
+	widgetKey: string;
+	checked: boolean;
+	keys: Array<string>;
+};
+type SearchTakeResult = {
+	/**
+	* Matches discovered since the previous take()
+	*/
+	matches: Array<GrepMatch>;
+	/**
+	* Whether the producer has finished (no more matches will arrive)
+	*/
+	done: boolean;
+	/**
+	* Total number of matches the producer has emitted across all batches
+	* (including ones already drained on prior take() calls)
+	*/
+	totalSeen: number;
+	/**
+	* Whether the producer stopped early because it hit `maxResults`
+	*/
+	truncated: boolean;
+	/**
+	* Producer error, if any (e.g., invalid regex). When set, `done` is also true.
+	*/
+	error?: string | null;
+};
+interface SearchHandle {
+	searchId: number;
+	take(): SearchTakeResult;
+	cancel(): void;
+}
 type AuthorityFilesystem = {
 	kind: "local";
 };
@@ -1210,6 +1570,16 @@ interface EditorAPI {
 	* Open a file, optionally at a specific line/column
 	*/
 	openFile(path: string, line: number | null, column: number | null): boolean;
+	/**
+	* Open a file in the background — no focus change, no
+	* active-split mutation. `windowId` defaults to the active
+	* session. Setting it to an inactive session id loads the
+	* file's buffer and adds it as a tab in that session's
+	* stashed split tree, ready to be revealed on next dive.
+	* Orchestrator uses this to populate worktree sessions with
+	* preselected files.
+	*/
+	openFileInBackground(path: string, windowId?: number): boolean;
 	/**
 	* Open a file in a specific split
 	*/
@@ -1750,6 +2120,24 @@ interface EditorAPI {
 	*/
 	setPromptTitle(title: StyledText[]): boolean;
 	/**
+	* Set the footer chrome row of the floating-overlay prompt's
+	* results pane. Plugins use this for hotkey-hint banners
+	* (Orchestrator's `[n] new   [d] dive   [Esc] close` row).
+	* Empty array clears the footer. Has no visible effect on
+	* non-overlay prompts.
+	*/
+	setPromptFooter(footer: StyledText[]): boolean;
+	/**
+	* Override the currently-highlighted suggestion row in the
+	* open prompt. The editor clamps `index` to the suggestion
+	* list's bounds and the renderer scrolls it into view on
+	* the next frame. No-op when no prompt is open or the
+	* suggestion list is empty. Typical use: re-opening a
+	* picker and pre-selecting the entry the user last acted on
+	* (Orchestrator highlights the active session).
+	*/
+	setPromptSelectedIndex(index: number): boolean;
+	/**
 	* Define a buffer mode (takes bindings as array of [key, command] pairs)
 	*/
 	defineMode(name: string, bindingsArr: string[][], readOnly?: boolean, allowTextInput?: boolean, inheritNormalBindings?: boolean): boolean;
@@ -1773,6 +2161,81 @@ interface EditorAPI {
 	* Focus a specific split
 	*/
 	focusSplit(splitId: number): boolean;
+	/**
+	* Create a new editor session rooted at `root`. `root` must be
+	* an absolute path; relative paths are rejected by the editor
+	* (logged, no session created). The new session's id is
+	* reported via the `window_created` hook payload — plugins
+	* that need the id should listen for that event rather than
+	* polling `listWindows`.
+	* 
+	* Returns `false` only when the IPC channel to the editor is
+	* closed (editor is shutting down).
+	*/
+	createWindow(root: string, label: string): boolean;
+	/**
+	* Make the session with id `id` the active one. No-op if
+	* already active. Errors (id not found) are logged on the
+	* editor side; the JS caller can verify by reading
+	* `activeWindow()` after.
+	*/
+	setActiveWindow(id: number): boolean;
+	/**
+	* Close session `id`. Refuses to close the active session or
+	* the base session (id 1). Logs and no-ops on failure.
+	*/
+	closeWindow(id: number): boolean;
+	/**
+	* Eagerly initialise an inactive session's per-session state
+	* (file tree walk, ignore matcher, etc.) without diving.
+	* No-op for the active session or unknown id.
+	*/
+	prewarmWindow(id: number): boolean;
+	/**
+	* Register a `notify`-backed watch on `path`. Returns a
+	* promise that resolves to a numeric `handle` (also passed
+	* in subsequent `path_changed` event payloads). The promise
+	* rejects on `notify` errors (path missing, kernel limit).
+	* 
+	* `recursive` defaults to `false`. Non-recursive watches
+	* cover the path itself plus its direct children for
+	* directories — see `services/file_watcher.rs` for the
+	* rationale.
+	*/
+	watchPath(path: string, recursive?: boolean): Promise<number>;
+	/**
+	* Drop a watcher by its handle. Unknown handles are
+	* silently ignored.
+	*/
+	unwatchPath(handle: number): boolean;
+	/**
+	* Tell the editor that the floating-overlay prompt's
+	* preview pane should render the entire split tree of
+	* session `id` natively. `0` (or any unknown id) clears the
+	* override and the preview falls back to the existing
+	* path-based phantom-leaf renderer.
+	* 
+	* Orchestrator calls this on each prompt-selection-change so
+	* the right pane shows the highlighted session's full
+	* editor UI live — splits, terminals, syntax highlighting,
+	* decorations — at native rendering cost.
+	*/
+	previewWindowInRect(id: number): boolean;
+	/**
+	* Clear the session-preview override. Equivalent to
+	* `previewWindowInRect(0)` but reads better at call sites.
+	*/
+	clearWindowPreview(): boolean;
+	/**
+	* All editor sessions, sorted by id (creation order). Always
+	* non-empty (the base session is always present).
+	*/
+	listWindows(): WindowInfo[];
+	/**
+	* The currently active session id. Always present in
+	* `listWindows()`.
+	*/
+	activeWindow(): number;
 	/**
 	* Set scroll position of a split
 	*/
@@ -1855,6 +2318,22 @@ interface EditorAPI {
 	*/
 	getGlobalState(key: string): unknown;
 	/**
+	* Set per-session state on the **active** session. Same
+	* shape as `setGlobalState` (write-through to snapshot +
+	* dispatched to editor; null/undefined deletes), but the
+	* underlying storage lives on `Session.plugin_state` and
+	* swaps with the rest of session state on `setActiveWindow`.
+	* Plugins that genuinely want per-project state use this;
+	* Orchestrator itself uses `setGlobalState` because its session
+	* list lives above session boundaries.
+	*/
+	setWindowState(key: string, value: unknown): boolean;
+	/**
+	* Get per-session state from the **active** session
+	* (snapshot read). `undefined` if missing.
+	*/
+	getWindowState(key: string): unknown;
+	/**
 	* Create a scroll sync group for anchor-based synchronized scrolling
 	*/
 	createScrollSyncGroup(groupId: number, leftSplit: number, rightSplit: number): boolean;
@@ -1878,6 +2357,12 @@ interface EditorAPI {
 	* Takes a typed ActionPopupOptions struct - serde validates field names at runtime
 	*/
 	showActionPopup(opts: ActionPopupOptions): boolean;
+	/**
+	* Contribute (or replace, or clear) menu rows for the LSP-Servers
+	* popup. Pass an empty `items` to clear this plugin's slice for
+	* the given language. See `PluginCommand::SetLspMenuContributions`.
+	*/
+	setLspMenuContributions(pluginId: string, language: string, items: TsLspMenuItem[]): boolean;
 	/**
 	* Disable LSP for a specific language
 	*/
@@ -1933,6 +2418,60 @@ interface EditorAPI {
 	* Get text properties at cursor position (returns JS array)
 	*/
 	getTextPropertiesAtCursor(bufferId: number): TextPropertiesAtCursor;
+	/**
+	* Mount a declarative widget panel inside a virtual buffer.
+	* 
+	* `spec` is a `WidgetSpec` JSON tree (see fresh.d.ts for the
+	* shape). The host renders the spec into the buffer; subsequent
+	* `updateWidgetPanel` calls re-render the panel against the
+	* previously-mounted spec.
+	* 
+	* Returns true on successful queue, false if the IPC channel is
+	* closed.
+	*/
+	mountWidgetPanel(panelId: number, bufferId: number, specObj: unknown): boolean;
+	/**
+	* Replace the spec of a previously-mounted widget panel.
+	* No-op if the panel id was never mounted.
+	*/
+	updateWidgetPanel(panelId: number, specObj: unknown): boolean;
+	/**
+	* Unmount a previously-mounted widget panel. The plugin retains
+	* ownership of the underlying virtual buffer.
+	*/
+	unmountWidgetPanel(panelId: number): boolean;
+	/**
+	* Route a keystroke / nav action to the panel's focused widget.
+	* 
+	* `action` is a `WidgetAction` JSON object — see fresh.d.ts for
+	* the shapes (`{kind: "focusAdvance", delta: 1}` etc.). Plugin's
+	* `defineMode` bindings dispatch into here for keys handled by
+	* the widget layer; the host runtime acts on the panel's
+	* currently focused widget and fires `widget_event` as
+	* appropriate.
+	*/
+	widgetCommand(panelId: number, actionObj: unknown): boolean;
+	/**
+	* Apply a targeted mutation to a mounted widget panel — the
+	* IPC fast path. Use instead of `updateWidgetPanel` when the
+	* model change touches a single widget; the host applies the
+	* mutation in place without re-transmitting the full spec.
+	* See `WidgetMutation` in fresh.d.ts for the shapes.
+	*/
+	widgetMutate(panelId: number, mutationObj: unknown): boolean;
+	/**
+	* Mount a declarative widget panel as a centered floating
+	* overlay (not bound to any virtual buffer).
+	*/
+	mountFloatingWidget(panelId: number, specObj: unknown, widthPct: number, heightPct: number): boolean;
+	/**
+	* Replace the spec of the currently-mounted floating widget panel.
+	*/
+	updateFloatingWidget(panelId: number, specObj: unknown): boolean;
+	/**
+	* Tear down the floating widget panel.
+	*/
+	unmountFloatingWidget(panelId: number): boolean;
 	/**
 	* Spawn a process (async, returns request_id)
 	*/
@@ -2006,18 +2545,17 @@ interface EditorAPI {
 	*/
 	grepProject(pattern: string, fixedString: boolean | null, caseSensitive: boolean | null, maxResults: number | null, wholeWords: boolean | null): Promise<GrepMatch[]>;
 	/**
-	* Streaming project-wide grep search
-	* Returns a thenable with a searchId property. The progressCallback is called
-	* with batches of matches as they are found.
+	* Begin a streaming project-wide search and return a `SearchHandle`.
+	* The producer (host) writes matches at full speed into shared state;
+	* the consumer drains via `handle.take()` at its own cadence. Call
+	* `handle.cancel()` to abort.
 	*/
-	grepProjectStreaming(pattern: string, opts?: {
+	beginSearch(pattern: string, opts?: {
 		fixedString?: boolean;
 		caseSensitive?: boolean;
 		maxResults?: number;
 		wholeWords?: boolean;
-	}, progressCallback?: (matches: GrepMatch[], done: boolean) => void): PromiseLike<GrepMatch[]> & {
-		searchId: number;
-	};
+	}): SearchHandle;
 	/**
 	* Replace matches in a file's buffer (async)
 	* Opens the file if not already in a buffer, applies edits via the buffer model,
@@ -2048,6 +2586,15 @@ interface EditorAPI {
 	* Close a terminal
 	*/
 	closeTerminal(terminalId: number): boolean;
+	/**
+	* Send `signal` ("SIGTERM" / "SIGKILL" / "SIGINT" / "SIGHUP")
+	* to every process group the window `id` is tracking. The
+	* window's authority decides delivery; this is the
+	* canonical entry point for "stop everything this window
+	* owns" rather than reaching at the terminal level. Returns
+	* `false` only when the command channel is closed.
+	*/
+	signalWindow(id: number, signal: string): boolean;
 	/**
 	* Force refresh of line display
 	*/
@@ -2320,6 +2867,56 @@ interface HookEventMap {
 			key: string;
 			action: string;
 		}[];
+	};
+	// ── PTY terminals (see crates/fresh-core/src/hooks.rs) ───────────────────
+	terminal_output: {
+		terminal_id: number;
+		last_line: string;
+	};
+	terminal_exit: {
+		terminal_id: number;
+		exit_code: number | null;
+	};
+	// ── filesystem watching (watchPath plugin API) ────────────────────────────
+	path_changed: {
+		handle: number;
+		path: string;
+		/** "modify" | "create" | "delete" | "rename" | "other" */
+		kind: string;
+	};
+	// ── editor sessions (Orchestrator; see orchestrator-sessions-design.md) ────────
+	window_created: {
+		id: number;
+		label: string;
+		root: string;
+	};
+	window_closed: {
+		id: number;
+	};
+	active_window_changed: {
+		previous_id: number | null;
+		active_id: number;
+	};
+	// ── widget runtime ───────────────────────────────────────────────────────
+	/**
+	* A widget mounted via `editor.mountWidgetPanel` emitted a
+	* semantic event. Fired when the host's hit-test routes a mouse
+	* click to a `Toggle` / `Button` widget node within a mounted
+	* widget panel. See `docs/internal/plugin-widget-library-design.md`.
+	*
+	* Routing is by `panel_id` (matches the id the plugin allocated
+	* at mount time) plus `widget_key` (the stable `key` set on the
+	* widget spec node, or empty when the spec did not assign one).
+	*
+	* `event_type` and `payload` shapes:
+	*   * Toggle: `event_type = "toggle"`, `payload = { checked: <new> }`.
+	*   * Button: `event_type = "activate"`, `payload = {}`.
+	*/
+	widget_event: {
+		panel_id: number;
+		widget_key: string;
+		event_type: string;
+		payload: Record<string, unknown>;
 	};
 }
 /**

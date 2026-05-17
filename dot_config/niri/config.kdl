@@ -7,8 +7,20 @@ config-notification {
 }
 
 gestures {
+    dnd-edge-view-scroll {
+        trigger-width 30
+        delay-ms 100
+        max-speed 1500
+    }
+
+    dnd-edge-workspace-switch {
+        trigger-height 50
+        delay-ms 100
+        max-speed 1500
+    }
     hot-corners {
-        off
+        // off
+        top-left
     }
 }
 
@@ -39,7 +51,7 @@ input {
     // All commented-out settings here are examples, not defaults.
     touchpad {
         // off
-        tap
+        // tap
         // dwt
         // dwtp
         // drag false
@@ -47,7 +59,8 @@ input {
         natural-scroll
         // accel-speed 0.2
         // accel-profile "flat"
-        // scroll-method "two-finger"
+        click-method "clickfinger"
+        scroll-method "two-finger"
         // disabled-on-external-mouse
     }
 

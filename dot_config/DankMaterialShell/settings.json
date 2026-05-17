@@ -235,7 +235,7 @@
   "dankLauncherV2UnloadOnClose": false,
   "useAutoLocation": false,
   "weatherEnabled": true,
-  "networkPreference": "auto",
+  "networkPreference": "wifi",
   "iconTheme": "System Default",
   "cursorSettings": {
     "theme": "Adwaita",
@@ -277,12 +277,12 @@
   "soundPluggedIn": true,
   "acMonitorTimeout": 600,
   "acLockTimeout": 0,
-  "acSuspendTimeout": 1800,
+  "acSuspendTimeout": 1200,
   "acSuspendBehavior": 0,
   "acProfileName": "",
-  "batteryMonitorTimeout": 0,
+  "batteryMonitorTimeout": 300,
   "batteryLockTimeout": 0,
-  "batterySuspendTimeout": 0,
+  "batterySuspendTimeout": 1200,
   "batterySuspendBehavior": 0,
   "batteryProfileName": "",
   "batteryChargeLimit": 100,
@@ -429,6 +429,9 @@
   "niriOutputSettings": {
     "DP-3": {
       "vrrOnDemand": true
+    },
+    "eDP-1": {
+      "vrrOnDemand": true
     }
   },
   "hyprlandOutputSettings": {},
@@ -448,13 +451,24 @@
       ],
       "showOnLastDisplay": true,
       "leftWidgets": [
-        "workspaceSwitcher",
-        "focusedWindow"
+        {
+          "id": "workspaceSwitcher",
+          "enabled": true
+        },
+        {
+          "id": "focusedWindow",
+          "enabled": true
+        }
       ],
       "centerWidgets": [
-        "music",
-        "clock",
-        "weather"
+        {
+          "id": "music",
+          "enabled": true
+        },
+        {
+          "id": "clock",
+          "enabled": true
+        }
       ],
       "rightWidgets": [
         {
@@ -466,19 +480,15 @@
           "enabled": true
         },
         {
-          "id": "cpuUsage",
-          "enabled": true
-        },
-        {
-          "id": "memUsage",
-          "enabled": true
-        },
-        {
-          "id": "dankKDEConnect",
+          "id": "idleInhibitor",
           "enabled": true
         },
         {
           "id": "notificationButton",
+          "enabled": true
+        },
+        {
+          "id": "dankKDEConnect",
           "enabled": true
         },
         {

@@ -127,3 +127,16 @@ declare global {
 }
 export {};
 
+// ── vi_mode ─────────────────────
+export type ViModeApi = {
+	toggle(): void;
+	enable(): void;
+	disable(): void;
+	isEnabled(): boolean;
+};
+declare global {
+	interface FreshPluginRegistry {
+		"vi-mode": ViModeApi;
+	}
+}
+

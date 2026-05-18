@@ -23,7 +23,7 @@
     "dock": "right",
     "default_model": {
       "provider": "openrouter",
-      "model": "~google/gemini-flash-latest",
+      "model": "google/gemini-3.1-flash-lite",
       "enable_thinking": true
     },
     "favorite_models": [],

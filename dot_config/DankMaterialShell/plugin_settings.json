@@ -5,5 +5,19 @@
   },
   "wallpaperCarousel": {
     "enabled": true
+  },
+  "dankLauncherKeys": {
+    "enabled": true,
+    "noTrigger": true
+  },
+  "dankNotepadModule": {
+    "enabled": true
+  },
+  "dockerManager": {
+    "enabled": true
+  },
+  "homeAssistantMonitor": {
+    "enabled": true,
+    "haRefreshCounter": 2
   }
 }

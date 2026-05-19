@@ -206,7 +206,7 @@
   "runningAppsGroupByApp": false,
   "runningAppsCurrentMonitor": false,
   "appIdSubstitutions": [],
-  "centeringMode": "index",
+  "centeringMode": "geometric",
   "clockDateFormat": "",
   "lockDateFormat": "",
   "greeterRememberLastSession": true,
@@ -329,23 +329,23 @@
   "matugenTemplateVscode": true,
   "matugenTemplateEmacs": true,
   "matugenTemplateZed": true,
-  "showDock": false,
+  "showDock": true,
   "dockAutoHide": false,
   "dockSmartAutoHide": true,
   "dockGroupByApp": false,
   "dockOpenOnOverview": false,
   "dockPosition": 1,
   "dockSpacing": 4,
-  "dockBottomGap": 0,
-  "dockMargin": 0,
-  "dockIconSize": 40,
+  "dockBottomGap": -1,
+  "dockMargin": 10,
+  "dockIconSize": 58,
   "dockIndicatorStyle": "circle",
   "dockBorderEnabled": false,
   "dockBorderColor": "surfaceText",
   "dockBorderOpacity": 1,
   "dockBorderThickness": 1,
   "dockIsolateDisplays": false,
-  "dockLauncherEnabled": true,
+  "dockLauncherEnabled": false,
   "dockLauncherLogoMode": "compositor",
   "dockLauncherLogoCustomPath": "",
   "dockLauncherLogoColorOverride": "",
@@ -456,12 +456,9 @@
           "enabled": true
         },
         {
-          "id": "runningApps",
+          "id": "spacer",
           "enabled": true,
-          "runningAppsCompactMode": true,
-          "runningAppsGroupByApp": false,
-          "runningAppsCurrentWorkspace": true,
-          "runningAppsCurrentMonitor": false
+          "size": 10
         },
         {
           "id": "focusedWindow",
@@ -472,14 +469,10 @@
         {
           "id": "music",
           "enabled": true,
-          "mediaSize": 0
+          "mediaSize": 1
         },
         {
           "id": "clock",
-          "enabled": true
-        },
-        {
-          "id": "homeAssistantMonitor",
           "enabled": true
         }
       ],
@@ -494,6 +487,10 @@
         },
         {
           "id": "idleInhibitor",
+          "enabled": true
+        },
+        {
+          "id": "privacyIndicator",
           "enabled": true
         },
         {
@@ -518,7 +515,7 @@
       "bottomGap": 0,
       "transparency": 1,
       "widgetTransparency": 1,
-      "squareCorners": true,
+      "squareCorners": false,
       "noBackground": true,
       "maximizeWidgetIcons": false,
       "maximizeWidgetText": false,

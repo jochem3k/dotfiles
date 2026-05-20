@@ -2,6 +2,7 @@
 // "/-" comments out the following node.
 // Check the wiki for a full description of the configuration:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
+
 config-notification {
     disable-failed
 }
@@ -282,6 +283,7 @@ recent-windows {
         Alt+Shift+grave { previous-window filter="app-id"; }
     }
 }
+
 
 // Include dms files
 include "dms/colors.kdl"

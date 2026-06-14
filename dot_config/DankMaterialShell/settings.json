@@ -1,6 +1,6 @@
 {
   "currentThemeName": "custom",
-  "currentThemeCategory": "registry",
+  "currentThemeCategory": "custom",
   "customThemeFile": "/home/jochem/.config/DankMaterialShell/themes/catppuccin/theme.json",
   "registryThemeVariants": {
     "catppuccin": {
@@ -42,8 +42,8 @@
     },
     "peaceAndQuiet": "cyan"
   },
-  "matugenScheme": "scheme-vibrant",
-  "runUserMatugenTemplates": false,
+  "matugenScheme": "scheme-tonal-spot",
+  "runUserMatugenTemplates": true,
   "matugenTargetMonitor": "",
   "popupTransparency": 1,
   "dockTransparency": 1,
@@ -308,7 +308,7 @@
   "muxUseCustomCommand": false,
   "muxCustomCommand": "",
   "muxSessionFilter": "",
-  "runDmsMatugenTemplates": false,
+  "runDmsMatugenTemplates": true,
   "matugenTemplateGtk": false,
   "matugenTemplateNiri": true,
   "matugenTemplateHyprland": true,
@@ -517,7 +517,7 @@
       "bottomGap": 0,
       "transparency": 1,
       "widgetTransparency": 1,
-      "squareCorners": false,
+      "squareCorners": true,
       "noBackground": true,
       "maximizeWidgetIcons": false,
       "maximizeWidgetText": false,

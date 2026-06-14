@@ -5,7 +5,7 @@ set -g fish_greeting
 # In Fish, 'set -gx' replaces 'export' (g = global, x = export)
 set -gx EDITOR "fresh"
 set -gx VISUAL "fresh"
-set -gx BAT_THEME "tokyonight_night"
+set -gx BAT_THEME "Catppuccin Mocha"
 
 # Command substitution uses parentheses () instead of $()
 if type -q vivid

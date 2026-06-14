@@ -2,7 +2,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 export EDITOR="fresh"
 export VISUAL="fresh"
-export BAT_THEME="tokyonight_night"
+export BAT_THEME="Catppuccin Mocha"
 export LS_COLORS="$(vivid generate ansi)"
 
 # --- 2. Oh My Zsh Configuration ---

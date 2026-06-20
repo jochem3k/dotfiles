@@ -1,0 +1,21 @@
+AddKeysToAgent yes
+
+Host *
+ServerAliveInterval 60
+ServerAliveCountMax 3
+
+Host docker-prod
+HostName 192.168.2.250
+User docker
+
+Host hytale
+HostName 192.168.2.240
+User hytale
+
+Host pmb
+HostName 192.168.2.211
+User protonmail-bridge
+
+Host dns
+HostName 192.168.2.253
+User dns

@@ -421,6 +421,10 @@ type BufferInfo = {
 	*/
 	is_virtual: boolean;
 	/**
+	* Whether editing is disabled for this buffer.
+	*/
+	editing_disabled: boolean;
+	/**
 	* Current view mode of the active split: "source" or "compose"
 	*/
 	view_mode: string;
@@ -1044,6 +1048,16 @@ type WidgetSpec = {
 	* row doesn't reshuffle when the disabled flag flips.
 	*/
 	disabled: boolean;
+	/**
+	* When false, the button is dropped from the Tab cycle (but
+	* still renders and stays clickable). Used for radio-style
+	* groups — a row of buttons where only the *active* option
+	* should be a Tab stop and ←/→ moves the selection within
+	* the group, so Tab advances one stop per group rather than
+	* one stop per option. Defaults to true (ordinary buttons
+	* are tabbable).
+	*/
+	focusable: boolean;
 } | {
 	"kind": "spacer";
 	cols: number;
@@ -2099,6 +2113,13 @@ interface EditorAPI {
 	*/
 	envActive(): boolean;
 	/**
+	* The environment core detected in the workspace, as a JSON string
+	* (`{name, kind, snippet}`) or empty when none. Exposed as
+	* `editor.detectedEnv()`. Detection lives only in core; the env-manager
+	* plugin consumes this result instead of probing the filesystem itself.
+	*/
+	detectedEnv(): string;
+	/**
 	* Join path components (variadic - accepts multiple string arguments)
 	* Always uses forward slashes for cross-platform consistency (like Node.js path.posix.join)
 	* 
@@ -3075,7 +3096,7 @@ interface EditorAPI {
 	* Mount a declarative widget panel as a centered floating
 	* overlay (not bound to any virtual buffer).
 	*/
-	mountFloatingWidget(panelId: number, specObj: unknown, widthPct: number, heightPct: number, asDock?: boolean): boolean;
+	mountFloatingWidget(panelId: number, specObj: unknown, widthPct: number, heightPct: number, asDock?: boolean, focusMarker?: boolean): boolean;
 	/**
 	* Replace the spec of the currently-mounted floating widget panel.
 	*/
@@ -3364,6 +3385,9 @@ interface HookEventMap {
 	authority_changed: {
 		label: string;
 	};
+	trust_changed: {
+		level: "trusted" | "restricted" | "blocked";
+	};
 	// ── buffer lifecycle ─────────────────────────────────────────────────────
 	buffer_activated: {
 		buffer_id: number;
@@ -3629,6 +3653,9 @@ interface HookEventMap {
 	* click to a `Toggle` / `Button` widget node within a mounted
 	* widget panel. See `docs/internal/plugin-widget-library-design.md`.
 	*
+	* Panel ids are plugin-local: the host keys panels by
+	* (plugin, id) and delivers each event only to the plugin that
+	* owns the panel, so ids never need to be globally unique.
 	* Routing is by `panel_id` (matches the id the plugin allocated
 	* at mount time) plus `widget_key` (the stable `key` set on the
 	* widget spec node, or empty when the spec did not assign one).

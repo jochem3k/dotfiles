@@ -46,7 +46,7 @@ alias df='duf'
 alias du='dust'
 alias top='dgop'
 alias z='zeditor'
-alias ls='eza -lh --icons --group-directories-first --git --header --octal-permissions --color=auto'
+alias ls='eza -alh --icons --group-directories-first --git --header --octal-permissions --color=auto'
 
 # Defensive Safeguards
 alias cp='cp -i'
@@ -55,12 +55,19 @@ alias rm='rm -I --preserve-root'
 alias mkdir='mkdir -p'
 
 # ==============================================================================
-# --- 5. Ghostty Architecture ---
+# --- 5. SSH & Ghostty Architecture ---
 # ==============================================================================
 # Ensures terminfo rules pass securely when connecting to remote hosts via Ghostty
 if string match -q "*ghostty*" $TERM
     alias ssh="env TERM=xterm-256color ssh"
 end
+
+# Remote Infrastructure Routing
+alias d0='ssh docker@192.168.2.250'
+alias hy='ssh hytale@192.168.2.240'
+alias pmb='ssh protonmail-bridge@192.168.2.211'
+alias tailsc='ssh tailscale@192.168.2.213'
+alias dns='ssh dns@192.168.2.253'
 
 # ==============================================================================
 # --- 6. Interactive Visuals ---

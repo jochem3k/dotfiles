@@ -6,7 +6,7 @@ fi
 
 if command -v brew &> /dev/null; then
     echo "🚀 Initializing declarative Homebrew bundle installation..."
-    brew bundle --global --file="${HOME}/.Brewfile"
+    brew bundle --global
 else
     echo "⚠️ Homebrew not found in PATH. Skipping bundle installation."
 fi

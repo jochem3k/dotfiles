@@ -46,6 +46,6 @@
   "theme": {
     "mode": "system",
     "light": "DankShell Light",
-    "dark": "DankShell Dark",
+    "dark": "Catppuccin Mocha",
   },
 }

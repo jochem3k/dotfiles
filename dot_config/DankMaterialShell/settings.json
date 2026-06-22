@@ -6,7 +6,7 @@
     "catppuccin": {
       "dark": {
         "flavor": "mocha",
-        "accent": "lavender"
+        "accent": "rosewater"
       },
       "light": {
         "flavor": "latte",
@@ -310,7 +310,7 @@
   "muxCustomCommand": "",
   "muxSessionFilter": "",
   "runDmsMatugenTemplates": true,
-  "matugenTemplateGtk": false,
+  "matugenTemplateGtk": true,
   "matugenTemplateNiri": true,
   "matugenTemplateHyprland": true,
   "matugenTemplateMangowc": true,

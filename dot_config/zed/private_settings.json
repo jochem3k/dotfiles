@@ -45,7 +45,7 @@
   "buffer_font_size": 15,
   "theme": {
     "mode": "system",
-    "light": "DankShell Light",
+    "light": "Catppuccin Frappé",
     "dark": "Catppuccin Mocha",
   },
 }

@@ -1,0 +1,5 @@
+[Context]
+filesystems=xdg-config/gtk-3.0:ro;xdg-config/gtk-4.0:ro;~/.local/share/icons:ro;xdg-config/zed;
+
+[Environment]
+ADW_DEBUG_COLOR_SCHEME=prefer-dark

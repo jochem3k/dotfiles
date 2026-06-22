@@ -47,7 +47,6 @@ alias du='dust'
 alias top='dgop'
 alias z='zeditor'
 alias ls='eza -alh --icons --group-directories-first --git --header --octal-permissions --color=auto'
-alias just='ujust'
 
 # Defensive Safeguards
 alias cp='cp -i'
@@ -62,6 +61,13 @@ alias mkdir='mkdir -p'
 if string match -q "*ghostty*" $TERM
     alias ssh="env TERM=xterm-256color ssh"
 end
+
+# Remote Infrastructure Routing
+alias d0='ssh docker@192.168.2.250'
+alias hy='ssh hytale@192.168.2.240'
+alias pmb='ssh protonmail-bridge@192.168.2.211'
+alias tailsc='ssh tailscale@192.168.2.213'
+alias dns='ssh dns@192.168.2.253'
 
 # ==============================================================================
 # --- 6. Interactive Visuals ---

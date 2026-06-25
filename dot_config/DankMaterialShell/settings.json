@@ -1,7 +1,7 @@
 {
   "currentThemeName": "custom",
   "currentThemeCategory": "registry",
-  "customThemeFile": "/home/jochem/.config/DankMaterialShell/themes/catppuccin/theme.json",
+  "customThemeFile": "/home/jochem/.config/DankMaterialShell/themes/gnomeAdwaita/theme.json",
   "registryThemeVariants": {
     "catppuccin": {
       "dark": {
@@ -310,7 +310,7 @@
   "muxCustomCommand": "",
   "muxSessionFilter": "",
   "runDmsMatugenTemplates": true,
-  "matugenTemplateGtk": true,
+  "matugenTemplateGtk": false,
   "matugenTemplateNiri": true,
   "matugenTemplateHyprland": true,
   "matugenTemplateMangowc": true,

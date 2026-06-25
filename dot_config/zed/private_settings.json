@@ -18,6 +18,7 @@
     "dock": "left"
   },
   "git_panel": {
+    "tree_view": true,
     "dock": "left"
   },
   "agent": {
@@ -46,6 +47,6 @@
   "theme": {
     "mode": "system",
     "light": "Catppuccin Frappé",
-    "dark": "Catppuccin Mocha",
+    "dark": "Adwaita Dark",
   },
 }

@@ -6,9 +6,7 @@
         "https://catppuccin.github.io/discord/dist/catppuccin-mocha.theme.css"
     ],
     "eagerPatches": false,
-    "enabledThemes": [
-        "dank-discord.css"
-    ],
+    "enabledThemes": [],
     "enableReactDevtools": false,
     "frameless": false,
     "transparent": false,
@@ -567,10 +565,11 @@
         "authenticated": false,
         "url": "https://api.vencord.dev/",
         "settingsSync": false,
-        "settingsSyncVersion": 1778916517323
+        "settingsSyncVersion": 1782366992584
     },
     "uiElements": {
         "chatBarButtons": {},
         "messagePopoverButtons": {}
-    }
+    },
+    "windowsMaterial": "none"
 }

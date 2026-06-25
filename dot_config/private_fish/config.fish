@@ -47,6 +47,7 @@ alias du='dust'
 alias top='dgop'
 alias z='zeditor'
 alias ls='eza -alh --icons --group-directories-first --git --header --octal-permissions --color=auto'
+alias just='ujust'
 
 # Defensive Safeguards
 alias cp='cp -i'

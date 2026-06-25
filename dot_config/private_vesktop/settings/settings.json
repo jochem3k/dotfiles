@@ -2,9 +2,7 @@
     "autoUpdate": true,
     "autoUpdateNotification": true,
     "useQuickCss": true,
-    "themeLinks": [
-        "https://catppuccin.github.io/discord/dist/catppuccin-mocha.theme.css"
-    ],
+    "themeLinks": [],
     "eagerPatches": false,
     "enabledThemes": [],
     "enableReactDevtools": false,
@@ -553,6 +551,18 @@
             "enabled": true,
             "settingsLocation": "aboveNitro",
             "includeVencordInfoWhenCopying": true
+        },
+        "ConcatenatedComponentExtractor": {
+            "enabled": true
+        },
+        "DisableDeepLinks": {
+            "enabled": true
+        },
+        "SupportHelper": {
+            "enabled": true
+        },
+        "WebContextMenus": {
+            "enabled": true
         }
     },
     "notifications": {
@@ -565,7 +575,7 @@
         "authenticated": false,
         "url": "https://api.vencord.dev/",
         "settingsSync": false,
-        "settingsSyncVersion": 1782366992584
+        "settingsSyncVersion": 1782416698803
     },
     "uiElements": {
         "chatBarButtons": {},

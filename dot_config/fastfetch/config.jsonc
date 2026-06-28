@@ -39,15 +39,17 @@
     },
     {
       "type": "command",
-      "key": "  󰃭 Forged    ",
+      "key": "  󰃭 Build     ",
       "keyColor": "blue",
       "text": "btime=$(rpm-ostree status | grep -A 2 '●' | awk -F'[(|)]' '/Version/ {print $2}'); if [ -n \"$btime\" ]; then date -d \"$btime\" +'%b %d %Y'; else echo 'Unknown'; fi",
       "shell": "/bin/bash",
     },
     {
-      "type": "os",
+      "type": "command",
       "key": "  󰣛 OS        ",
-      "keyColor": "bright_blue",
+      "keyColor": "blue",
+      "text": "echo \"Blueshift $(awk -F= '/VERSION_ID/ {print $2}' /etc/os-release | tr -d '\"') (Fedora Atomic) $(uname -m)\"",
+      "shell": "/bin/bash",
     },
     {
       "type": "kernel",

@@ -298,7 +298,11 @@
   "launchPrefix": "",
   "brightnessDevicePins": {},
   "wifiNetworkPins": {},
-  "bluetoothDevicePins": {},
+  "bluetoothDevicePins": {
+    "preferredDevice": [
+      "88:C9:E8:1D:7C:5D"
+    ]
+  },
   "audioInputDevicePins": {},
   "audioOutputDevicePins": {},
   "gtkThemingEnabled": false,

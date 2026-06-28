@@ -126,13 +126,11 @@ binds {
     Print { screenshot; }
     XF86Launch1 { screenshot; }
     Mod+Shift+E { quit; }
-    Super+B hotkey-overlay-title="Open Browser" { spawn "zen-browser"; }
+    Super+B hotkey-overlay-title="Open Browser" { spawn "flatpak" "run" "app.zen_browser.zen"; }
     Super+E hotkey-overlay-title="Open Nautilus" { spawn "nautilus"; }
-    Super+M hotkey-overlay-title="Open Spotify" { spawn "spotify"; }
     Super+Return hotkey-overlay-title="Open Terminal" { spawn "ghostty"; }
     Super+S hotkey-overlay-title="Open Steam" { spawn "com.valvesoftware.Steam"; }
-    Super+T hotkey-overlay-title="Open Tasks" { spawn "tasks-org"; }
-    Super+Z hotkey-overlay-title="Open Zed" { spawn "zeditor"; }
+    Super+Z hotkey-overlay-title="Open Zed" { spawn "flatpak" "run" "dev.zed.Zed"; }
     Mod+D repeat=false { toggle-overview; }
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
     Mod+Shift+Slash { show-hotkey-overlay; }

@@ -34,7 +34,7 @@
       "type": "command",
       "key": "  󰡨 Image     ",
       "keyColor": "blue",
-      "text": "line=$(rpm-ostree status | grep '●'); clean=$(echo \"$line\" | sed -E 's#^.*(://|registry:)##' | sed -E 's#[^/]*/[^/]*/##'); if echo \"$line\" | grep -q 'unverified'; then echo \"$clean 🔓\"; else echo \"$clean \"; fi",
+      "text": "line=$(rpm-ostree status | grep '●'); clean=$(echo \"$line\" | sed -E 's#^.*(://|registry:)##' | sed -E 's#[^/]*/[^/]*/##'); if echo \"$line\" | grep -q 'unverified'; then echo \"$clean 🔓\"; else echo \"$clean 🔐\"; fi",
       "shell": "/bin/bash",
     },
     {

@@ -34,7 +34,14 @@
       "type": "command",
       "key": "  󰡨 Image     ",
       "keyColor": "blue",
-      "text": "line=$(rpm-ostree status | grep '●'); clean=$(echo \"$line\" | sed -E 's#^.*(://|registry:)##' | sed -E 's#[^/]*/[^/]*/##'); if echo \"$line\" | grep -q 'unverified'; then echo \"$clean 🔓\"; else echo \"$clean 🔐\"; fi",
+      "text": "line=$(rpm-ostree status | grep '●'); clean=$(echo \"$line\" | sed -E 's#^.*(://|registry:)##' | sed -E 's#[^/]*/[^/]*/##'); if echo \"$line\" | grep -q 'unverified'; then echo \"$clean 🔓\"; else echo \"$clean \"; fi",
+      "shell": "/bin/bash",
+    },
+    {
+      "type": "command",
+      "key": "  󰃭 Forged    ",
+      "keyColor": "blue",
+      "text": "btime=$(rpm-ostree status | grep -A 2 '●' | awk -F'[(|)]' '/Version/ {print $2}'); if [ -n \"$btime\" ]; then date -d \"$btime\" +'%b %d %Y'; else echo 'Unknown'; fi",
       "shell": "/bin/bash",
     },
     {

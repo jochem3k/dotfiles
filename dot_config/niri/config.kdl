@@ -246,6 +246,7 @@ window-rule {
     match app-id=r#"^xdg-desktop-portal$"#
     match app-id=r#"^org\.gnome\.Characters$"#
     match app-id=r#"^net\.nokyan\.Resources$"#
+    match app-id=r#"^it\.mijorus\.smile$"#
     open-floating true
 }
 window-rule {

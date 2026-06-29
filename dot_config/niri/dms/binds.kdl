@@ -88,7 +88,6 @@ binds {
     Mod+L { focus-column-right; }
     Mod+Left { focus-column-left; }
     Mod+Minus { set-column-width "-10%"; }
-    Mod+Period { expel-window-from-column; }
     Mod+Q repeat=false { close-window; }
     Mod+R { switch-preset-column-width; }
     Mod+Right { focus-column-right; }
@@ -128,6 +127,7 @@ binds {
     Mod+Shift+E { quit; }
     Super+B hotkey-overlay-title="Open Browser" { spawn "flatpak" "run" "app.zen_browser.zen"; }
     Super+E hotkey-overlay-title="Open Nautilus" { spawn "nautilus"; }
+    Super+Period hotkey-overlay-title="Open Smile" { spawn "flatpak" "run" "it.mijorus.smile"; }
     Super+Return hotkey-overlay-title="Open Terminal" { spawn "ghostty"; }
     Super+S hotkey-overlay-title="Open Steam" { spawn "com.valvesoftware.Steam"; }
     Super+Z hotkey-overlay-title="Open Zed" { spawn "flatpak" "run" "dev.zed.Zed"; }

@@ -269,10 +269,8 @@ window-rule {
 }
 window-rule {
     match app-id=r#"^app\.zen_browser\.zen$"#
-    default-column-width { proportion 1.0; }
-}
-window-rule {
     match app-id="^steam$"
+    match app-id="^helium$"
     default-column-width { proportion 1.0; }
 }
 // Open dms windows as floating by default

@@ -19,3 +19,11 @@ User protonmail-bridge
 Host dns
 HostName 192.168.2.253
 User dns
+
+Host pve
+HostName 192.168.2.201
+User root
+
+Host pbs
+HostName 192.168.2.202
+User root

@@ -5,7 +5,7 @@
   // ACTIVE BLUESHIFT LOGO
   // ==========================================
   "logo": {
-    "source": "~/.config/fastfetch/blueshift.txt",
+    "source": "~/.config/fastfetch/lapis.txt",
     "color": {
       "1": "blue",
     },

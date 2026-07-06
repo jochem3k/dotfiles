@@ -6,7 +6,7 @@ ServerAliveCountMax 3
 
 Host docker-prod
 HostName 192.168.2.250
-User docker
+User docker-prod
 
 Host hytale
 HostName 192.168.2.240
@@ -19,6 +19,10 @@ User protonmail-bridge
 Host dns
 HostName 192.168.2.253
 User dns
+
+Host netbird
+HostName 192.168.2.221
+User netbird
 
 Host pve
 HostName 192.168.2.201

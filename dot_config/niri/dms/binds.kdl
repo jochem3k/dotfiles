@@ -77,7 +77,7 @@ binds {
     Mod+Ctrl+Shift+WheelScrollUp { move-column-left; }
     Mod+Ctrl+WheelScrollLeft { move-column-left; }
     Mod+Ctrl+WheelScrollRight { move-column-right; }
-    Mod+Down { focus-window-down; }
+    Mod+Down { focus-workspace-down; }
     Mod+End { focus-column-last; }
     Mod+Equal { set-column-width "+10%"; }
     Mod+F { maximize-column; }
@@ -113,7 +113,7 @@ binds {
     Mod+Shift+T { toggle-window-floating; }
     Mod+Shift+Up { move-window-up; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
-    Mod+Up { focus-window-up; }
+    Mod+Up { focus-workspace-up; }
     Mod+W { toggle-column-tabbed-display; }
     Mod+WheelScrollDown { focus-column-right; }
     Mod+WheelScrollLeft { focus-column-left; }

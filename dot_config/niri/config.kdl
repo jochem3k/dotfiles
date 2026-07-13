@@ -129,7 +129,7 @@ layout {
     // You can also customize the heights that "switch-preset-window-height" (Mod+Shift+R) toggles between.
     // preset-window-heights { }
     // You can change the default width of the new windows.
-    default-column-width { proportion 0.5; }
+    default-column-width { {{ .default_column }}; }
     // If you leave the brackets empty, the windows themselves will decide their initial width.
     // default-column-width {}
     // By default focus ring and border are rendered as a solid background rectangle
@@ -234,7 +234,7 @@ window-rule {
     match app-id=r#"^gnome-control-center$"#
     match app-id=r#"^pavucontrol$"#
     match app-id=r#"^nm-connection-editor$"#
-    default-column-width { proportion 0.5; }
+    default-column-width { {{ .default_column }}; }
     open-floating false
 }
 window-rule {

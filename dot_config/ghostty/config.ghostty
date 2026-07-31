@@ -8,7 +8,7 @@ font-family = Adwaita Mono Nerd
 
 # Color theme name or path
 # Options: String
-theme = "dankcolors"
+theme = "Adwaita Dark"
 
 # Window height in cells
 # Options: Number
@@ -77,4 +77,3 @@ keybind = ctrl+super+]=unbind
 # Custom keybinding
 # Options: trigger=action
 keybind = ctrl+shift+w=close_surface
-

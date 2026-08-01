@@ -24,10 +24,9 @@ order = [ "Panel" ]
     font_family = "Adwaita Sans"
     margin_edge = 4
     margin_ends = 10
-    start = [ "workspaces", "spacer_20", "active_window" ]
+    start = [ "launcher", "spacer_20", "workspaces", "spacer_20", "active_window" ]
 
         [bar.Panel.dead_zone.actions]
-        left = "panel-open launcher"
         middle = "volume-mute"
         scroll_down = "volume-down"
         scroll_up = "volume-up"
@@ -172,9 +171,10 @@ settings_show_advanced = false
     [shell.greeter_sync]
     auto_sync = true
 
+    [shell.launcher]
+    compact = true
+
     [shell.panel]
-    launcher_placement = "attached"
-    launcher_position = "auto"
     open_near_click_control_center = true
     open_near_click_launcher = true
     session_position = "center"
@@ -221,7 +221,7 @@ show_label = false
 timezone = "Europe/Amsterdam"
 
 [widget.launcher]
-enabled = false
+glyph = "grid-dots"
 
 [widget.media]
 album_art_only = true

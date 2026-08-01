@@ -5,16 +5,22 @@ enable_sounds = true
 
 [bar.default]
 center = [ "media", "clock", "notifications", "bar" ]
-concave_edge_corners = false
 end = [ "tray", "clipboard", "volume", "brightness", "network", "bluetooth", "battery", "control-center" ]
-margin_edge = 3
-margin_ends = 3
-radius = 16
+margin_ends = 0
+radius = 8
 start = [ "launcher", "workspaces", "spacer_2", "active_window" ]
 
 [dock]
 enabled = true
-pinned = [ "org.gnome.Nautilus", "com.mitchellh.ghostty", "app.zen_browser.zen", "dev.zed.Zed", "md.obsidian.Obsidian" ]
+pinned = [
+    "org.gnome.Nautilus",
+    "com.mitchellh.ghostty",
+    "app.zen_browser.zen",
+    "dev.zed.Zed",
+    "md.obsidian.Obsidian",
+    "com.valvesoftware.Steam",
+    "dev.vencord.Vesktop"
+]
 reserve_space = false
 smart_auto_hide = true
 
@@ -95,8 +101,7 @@ settings_show_advanced = false
 [theme]
 community_palette = "ADW"
 mode = "dark"
-source = "wallpaper"
-wallpaper_scheme = "m3-content"
+source = "community"
 
 [wallpaper]
 directory = "/usr/share/backgrounds/custom"

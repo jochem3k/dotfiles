@@ -33,6 +33,17 @@ order = [ "Panel" ]
 [control_center]
 hidden_tabs = [ "screen-time" ]
 
+[desktop_widgets]
+schema_version = 2
+widget_order = []
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget]
+
 [dock]
 enabled = true
 pinned = [
@@ -48,8 +59,8 @@ pinned = [
 reserve_space = false
 smart_auto_hide = true
 
-[hot_corners.top_right]
-action = "launcher"
+[hot_corners.bottom_left]
+action = "window_switcher"
 
 [idle]
 behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
@@ -154,6 +165,9 @@ settings_show_advanced = false
     open_near_click_launcher = true
     session_position = "center"
 
+    [shell.screen_corners]
+    size = 1
+
 [theme]
 community_palette = "ADW"
 mode = "dark"
@@ -176,8 +190,12 @@ color_1 = "secondary"
 color_2 = "on_tertiary"
 
     [widget.audio_visualizer.actions]
-    left = "panel-open control-center media"
+    back = "media next"
+    forward = "media previous"
+    left = "panel-toggle control-center media"
     right = "media pause"
+    scroll_down = "media next"
+    scroll_up = "media previous"
 
 [widget.brightness]
 show_label = false
@@ -191,6 +209,12 @@ enabled = false
 [widget.media]
 album_art_only = true
 hide_when_no_media = true
+
+    [widget.media.actions]
+    back = "media next"
+    forward = "media previous"
+    scroll_down = "media next"
+    scroll_up = "media previous"
 
 [widget.network]
 show_label = false

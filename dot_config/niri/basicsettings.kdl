@@ -8,7 +8,7 @@ overview {
 
 animations {
     on
-    slowdown 1.0
+    slowdown 0.9
 }
 
 layout {

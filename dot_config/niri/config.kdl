@@ -95,7 +95,7 @@ layout {
         urgent-color "#c01c28"
     }
     border {
-        width 3
+        width 1
         active-color "#3584e4"
         inactive-color "#5e5c64"
         urgent-color "#c01c28"
@@ -190,6 +190,7 @@ window-rule {
     match app-id=r#"^org\.gnome\.Characters$"#
     match app-id=r#"^net\.nokyan\.Resources$"#
     match app-id=r#"^it\.mijorus\.smile$"#
+    match app-id=r#"^dev\.noctalia\.Noctalia$"#
     open-floating true
 }
 window-rule {

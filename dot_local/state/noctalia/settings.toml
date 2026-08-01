@@ -6,12 +6,12 @@ order = [ "Panel" ]
     [bar.Panel]
     center = [ "clock", "notifications" ]
     end = [
-        "bar",
-        "spacer_20",
         "audio_visualizer",
         "media",
         "spacer_20",
         "tray",
+        "spacer_20",
+        "bar",
         "spacer_20",
         "clipboard",
         "volume",

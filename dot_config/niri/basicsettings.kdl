@@ -16,7 +16,7 @@ layout {
     on
     }
 
-    gaps 8
+    gaps 10
     default-column-display "tabbed"
     center-focused-column "never"
     // empty-workspace-above-first

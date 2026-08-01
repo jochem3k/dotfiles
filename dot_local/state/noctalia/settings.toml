@@ -4,9 +4,12 @@ config_version = 10
 enable_sounds = true
 
 [bar.default]
-center = [ "media", "clock", "notifications" ]
+center = [ "media", "clock", "notifications", "bar" ]
+concave_edge_corners = false
 end = [ "tray", "clipboard", "volume", "brightness", "network", "bluetooth", "battery", "control-center" ]
-margin_ends = 0
+margin_edge = 3
+margin_ends = 3
+radius = 16
 start = [ "launcher", "workspaces", "spacer_2", "active_window" ]
 
 [dock]
@@ -74,7 +77,11 @@ widget_order = [ "lockscreen-login-box@eDP-1" ]
         show_unlock_hint = true
         show_weather = true
 
+[plugins]
+enabled = []
+
 [shell]
+font_family = "Adwaita Sans"
 polkit_agent = true
 settings_show_advanced = false
 
@@ -85,10 +92,9 @@ settings_show_advanced = false
     session_position = "center"
 
 [theme]
-builtin = "Dracula"
 community_palette = "ADW"
 mode = "dark"
-source = "community"
+source = "wallpaper"
 wallpaper_scheme = "m3-content"
 
 [wallpaper]
@@ -102,6 +108,9 @@ directory = "/usr/share/backgrounds/custom"
 
     [wallpaper.monitors.eDP-1]
     path = "/usr/share/backgrounds/custom/bazzite.png"
+
+[widget.bar]
+type = "icefish/phone-connect:bar"
 
 [widget.brightness]
 show_label = false

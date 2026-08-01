@@ -1,7 +1,13 @@
 config_version = 10
 
+[audio]
+enable_sounds = true
+
 [bar.default]
+center = [ "media", "clock", "notifications" ]
+end = [ "tray", "clipboard", "volume", "brightness", "network", "bluetooth", "battery", "control-center" ]
 margin_ends = 0
+start = [ "launcher", "workspaces", "spacer_2", "active_window" ]
 
 [dock]
 enabled = true
@@ -10,6 +16,25 @@ smart_auto_hide = true
 
 [hot_corners.top_right]
 action = "launcher"
+
+[idle]
+behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
+pre_action_fade_seconds = 5
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = false
+    timeout = 600.0
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = true
+    timeout = 600.0
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = true
+    timeout = 300.0
 
 [lockscreen]
 fingerprint = false
@@ -56,6 +81,9 @@ settings_show_advanced = false
     [shell.greeter_sync]
     auto_sync = true
 
+    [shell.panel]
+    session_position = "center"
+
 [theme]
 builtin = "Dracula"
 community_palette = "ADW"
@@ -74,3 +102,26 @@ directory = "/usr/share/backgrounds/custom"
 
     [wallpaper.monitors.eDP-1]
     path = "/usr/share/backgrounds/custom/bazzite.png"
+
+[widget.brightness]
+show_label = false
+
+[widget.launcher]
+enabled = false
+
+[widget.media]
+album_art_only = true
+hide_when_no_media = true
+
+[widget.network]
+show_label = false
+vpn_status = "both"
+
+[widget.notifications]
+hide_when_no_unread = true
+
+[widget.spacer_2]
+type = "spacer"
+
+[widget.volume]
+show_label = false

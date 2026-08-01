@@ -22,7 +22,13 @@ order = [ "Panel" ]
     font_family = "Adwaita Sans"
     margin_edge = 4
     margin_ends = 10
-    start = [ "launcher", "spacer_20", "workspaces", "spacer_20", "active_window" ]
+    start = [ "workspaces", "spacer_20", "active_window" ]
+
+        [bar.Panel.dead_zone.actions]
+        left = "panel-open launcher"
+        middle = "volume-mute"
+        scroll_down = "volume-down"
+        scroll_up = "volume-up"
 
 [control_center]
 hidden_tabs = [ "screen-time" ]
@@ -178,6 +184,9 @@ show_label = false
 
 [widget.clock]
 timezone = "Europe/Amsterdam"
+
+[widget.launcher]
+enabled = false
 
 [widget.media]
 album_art_only = true

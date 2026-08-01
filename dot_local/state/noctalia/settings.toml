@@ -32,6 +32,9 @@ order = [ "Panel" ]
         scroll_down = "volume-down"
         scroll_up = "volume-up"
 
+[battery]
+warning_threshold = 20
+
 [control_center]
 hidden_tabs = [ "screen-time" ]
 

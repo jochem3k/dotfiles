@@ -129,6 +129,7 @@ binds {
     Super+Return hotkey-overlay-title="Open Terminal" { spawn "ghostty"; }
     Super+S hotkey-overlay-title="Open Steam" { spawn "com.valvesoftware.Steam"; }
     Super+Z hotkey-overlay-title="Open Zed" { spawn "flatpak" "run" "dev.zed.Zed"; }
+    Super+M hotkey-overlay-title="Open Spotify" { spawn "com.spotify.Client"; }
 
     // Session / Overview Controls
     Mod+D repeat=false { toggle-overview; }

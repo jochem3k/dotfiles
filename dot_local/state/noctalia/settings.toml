@@ -4,10 +4,25 @@ config_version = 10
 order = [ "Panel" ]
 
     [bar.Panel]
-    center = [ "media", "clock", "notifications", "bar" ]
-    end = [ "tray", "clipboard", "volume", "brightness", "network", "bluetooth", "battery", "control-center" ]
-    margin_ends = 0
-    start = [ "launcher", "workspaces", "spacer_2", "active_window" ]
+    center = [ "clock", "notifications" ]
+    end = [
+        "audio_visualizer",
+        "media",
+        "spacer_20",
+        "tray",
+        "spacer_20",
+        "clipboard",
+        "volume",
+        "brightness",
+        "network",
+        "bluetooth",
+        "battery",
+        "control-center"
+    ]
+    font_family = "Adwaita Sans"
+    margin_edge = 4
+    margin_ends = 10
+    start = [ "launcher", "spacer_20", "workspaces", "spacer_20", "active_window" ]
 
 [control_center]
 hidden_tabs = [ "screen-time" ]
@@ -21,7 +36,8 @@ pinned = [
     "dev.zed.Zed",
     "md.obsidian.Obsidian",
     "com.valvesoftware.Steam",
-    "dev.vencord.Vesktop"
+    "dev.vencord.Vesktop",
+    "com.spotify.Client"
 ]
 reserve_space = false
 smart_auto_hide = true
@@ -126,11 +142,11 @@ settings_show_advanced = false
     auto_sync = true
 
     [shell.panel]
+    launcher_placement = "attached"
+    launcher_position = "auto"
     open_near_click_control_center = true
+    open_near_click_launcher = true
     session_position = "center"
-
-    [shell.screen_corners]
-    enabled = true
 
 [theme]
 community_palette = "ADW"
@@ -149,14 +165,19 @@ directory = "/usr/share/backgrounds/custom"
     [wallpaper.monitors.eDP-1]
     path = "/usr/share/backgrounds/custom/bazzite.png"
 
-[widget.bar]
-type = "icefish/phone-connect:bar"
+[widget.audio_visualizer]
+color_1 = "secondary"
+color_2 = "on_tertiary"
+
+    [widget.audio_visualizer.actions]
+    left = "panel-open control-center media"
+    right = "media pause"
 
 [widget.brightness]
 show_label = false
 
-[widget.launcher]
-enabled = false
+[widget.clock]
+timezone = "Europe/Amsterdam"
 
 [widget.media]
 album_art_only = true
@@ -169,7 +190,7 @@ vpn_status = "both"
 [widget.notifications]
 hide_when_no_unread = true
 
-[widget.spacer_2]
+[widget.spacer_20]
 type = "spacer"
 
 [widget.volume]

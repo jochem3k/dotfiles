@@ -224,8 +224,10 @@ timezone = "Europe/Amsterdam"
 glyph = "grid-dots"
 
 [widget.media]
-album_art_only = true
+art_size = 29
 hide_when_no_media = true
+max_length = 298
+title_scroll = "on_hover"
 
     [widget.media.actions]
     back = "media next"

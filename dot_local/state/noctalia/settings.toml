@@ -1,4 +1,4 @@
-config_version = 11
+config_version = 12
 
 [bar]
 order = [ "Panel" ]
@@ -22,8 +22,7 @@ order = [ "Panel" ]
         "control-center"
     ]
     font_family = "Adwaita Sans"
-    margin_edge = 4
-    margin_ends = 10
+    margin_ends = 0
     start = [ "launcher", "spacer_10", "workspaces", "spacer_20", "active_window" ]
 
         [bar.Panel.dead_zone.actions]

@@ -25,7 +25,7 @@ order = [ "Panel" ]
     font_family = "Adwaita Sans"
     margin_ends = 0
     radius = 0
-    start = [ "launcher", "spacer_20", "workspaces", "spacer_20", "active_window" ]
+    start = [ "launcher", "spacer_15", "workspaces", "spacer_20", "active_window" ]
 
         [bar.Panel.dead_zone.actions]
         middle = "volume-mute"
@@ -243,6 +243,10 @@ vpn_status = "both"
 
 [widget.notifications]
 hide_when_no_unread = true
+
+[widget.spacer_15]
+length = 15
+type = "spacer"
 
 [widget.spacer_20]
 type = "spacer"

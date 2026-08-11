@@ -251,5 +251,6 @@ type = "spacer"
 show_label = false
 
 [widget.workspaces]
-empty_color = "primary"
+empty_color = "on_tertiary"
+hide_when_empty = true
 occupied_color = "primary"

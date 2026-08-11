@@ -5,6 +5,7 @@ order = [ "Panel" ]
 
     [bar.Panel]
     center = [ "clock", "notifications" ]
+    concave_edge_corners = false
     end = [
         "audio_visualizer",
         "media",
@@ -23,7 +24,8 @@ order = [ "Panel" ]
     ]
     font_family = "Adwaita Sans"
     margin_ends = 0
-    start = [ "launcher", "spacer_10", "workspaces", "spacer_20", "active_window" ]
+    radius = 0
+    start = [ "launcher", "spacer_20", "workspaces", "spacer_20", "active_window" ]
 
         [bar.Panel.dead_zone.actions]
         middle = "volume-mute"
@@ -185,6 +187,7 @@ settings_show_advanced = false
 community_palette = "ADW"
 mode = "dark"
 source = "community"
+wallpaper_scheme = "m3-content"
 
 [wallpaper]
 directory = "/usr/share/backgrounds/custom"
@@ -241,12 +244,12 @@ vpn_status = "both"
 [widget.notifications]
 hide_when_no_unread = true
 
-[widget.spacer_10]
-length = 10
-type = "spacer"
-
 [widget.spacer_20]
 type = "spacer"
 
 [widget.volume]
 show_label = false
+
+[widget.workspaces]
+empty_color = "primary"
+occupied_color = "primary"

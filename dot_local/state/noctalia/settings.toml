@@ -220,6 +220,7 @@ type = "icefish/phone-connect:bar"
 show_label = false
 
 [widget.clock]
+format = "{:%b %d}  {:%H:%M}"
 timezone = "Europe/Amsterdam"
 
 [widget.launcher]

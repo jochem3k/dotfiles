@@ -262,5 +262,7 @@ drawer = true
 show_label = false
 
 [widget.workspaces]
+focused_color = "on_primary"
 hide_when_empty = true
+occupied_color = "outline"
 style = "minimal"

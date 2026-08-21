@@ -1,24 +1,23 @@
-config_version = 12
+config_version = 13
 
 [bar]
 order = [ "Panel" ]
 
     [bar.Panel]
-    center = [ "clock", "notifications" ]
+    center = [ "notifications", "clock" ]
     concave_edge_corners = false
     end = [
         "audio_visualizer",
         "media",
         "spacer_20",
-        "tray",
-        "spacer_20",
         "bar",
         "spacer_20",
+        "tray",
         "clipboard",
-        "volume",
         "brightness",
-        "network",
         "bluetooth",
+        "network",
+        "volume",
         "battery",
         "control-center"
     ]
@@ -113,6 +112,8 @@ widget_order = [ "lockscreen-login-box@DP-3", "lockscreen-login-box@eDP-1" ]
     cx = 1720.0
     cy = 1258.0
     output = "DP-3"
+    placement_height = 1440.0
+    placement_width = 3440.0
     rotation = 0.0
     type = "login_box"
 
@@ -138,6 +139,8 @@ widget_order = [ "lockscreen-login-box@DP-3", "lockscreen-login-box@eDP-1" ]
     cx = 960.0
     cy = 898.0
     output = "eDP-1"
+    placement_height = 0.0
+    placement_width = 0.0
     rotation = 0.0
     type = "login_box"
 
@@ -220,11 +223,11 @@ type = "icefish/phone-connect:bar"
 show_label = false
 
 [widget.clock]
-format = "{:%b %d}  {:%H:%M}"
+format = "{:%a %b %d}  {:%H:%M}"
 timezone = "Europe/Amsterdam"
 
 [widget.launcher]
-glyph = "grid-dots"
+glyph = "wave-sine"
 
 [widget.media]
 art_size = 29
@@ -252,10 +255,12 @@ type = "spacer"
 [widget.spacer_20]
 type = "spacer"
 
+[widget.tray]
+drawer = true
+
 [widget.volume]
 show_label = false
 
 [widget.workspaces]
-empty_color = "on_tertiary"
 hide_when_empty = true
-occupied_color = "primary"
+style = "minimal"

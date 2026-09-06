@@ -10,7 +10,7 @@ xwayland-satellite {
     path "xwayland-satellite"
 }
 
-include "basicsettings.kdl" // Added by niri-settings
-include "keybinds.kdl" // Added by niri-settings
+include "basicsettings.kdl"
+include "keybinds.kdl"
 include "display.kdl"
 include "windowrules.kdl"

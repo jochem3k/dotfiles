@@ -1,0 +1,58 @@
+[general]
+autostart = ["noctalia"]      # spawn-at-startup "noctalia"
+mod_key = "Super"             # input mod-key "Super"
+xwayland = true               # xwayland-satellite; must be on PATH
+show_cheatsheet = false       # hotkey-overlay skip-at-startup
+
+[appearance]
+prefer_no_csd = true          # prefer-no-csd
+border_width = 3              # focus-ring width
+corner_radius = 16            # geometry-corner-radius (global in Umbriel)
+drag_opacity = 0.75
+
+[appearance.shadow]
+enabled = true                # layout shadow
+
+[colors]
+insert_hint = "#FFC87F70"     # insert-hint color
+
+[colors.border]
+focused = "#3584e4"           # focus-ring active-color
+unfocused = "#505050"         # focus-ring inactive-color
+
+[layout]
+gap = 10                      # layout gaps 10
+width_presets = [0.333, 0.5, 0.667]
+
+[layout.scrolling]
+center_focused = false        # center-focused-column "never"
+
+[layout.struts]
+left = 0
+right = 0
+top = 0
+bottom = 0
+
+[input.touchpad]
+tap = true
+natural_scroll = true
+accel_profile = "adaptive"
+sensitivity = 0.17            # ~ niri accel-speed
+scroll_factor = 1.0
+# disable_while_typing / drag were commented or absent in your niri config;
+# Umbriel has disable_while_typing if you want dwt
+
+[input.mouse]
+accel_profile = "adaptive"
+sensitivity = 0.20
+scroll_factor = 1.0
+
+[input.keyboard]
+repeat_delay = 600            # repeat-delay 600
+repeat_rate = 25               # repeat-rate 25
+numlock_toggle = true          # numlock
+track_layout = "window"        # track-layout "window"
+
+[input.cursor]
+theme = "Adwaita"              # xcursor-theme
+size = 24                      # xcursor-size

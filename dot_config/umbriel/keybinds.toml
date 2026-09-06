@@ -1,0 +1,126 @@
+[keybinds]
+
+# --- Noctalia Shell ---
+"Mod+Space"  = "spawn:noctalia msg panel-toggle launcher"
+"Mod+N"      = "spawn:noctalia msg panel-toggle control-center"
+"Mod+Comma"  = "spawn:noctalia msg settings-toggle"
+"Mod+Alt+L"  = "spawn:noctalia msg session lock"
+
+# --- Audio / brightness OSDs (work while locked) ---
+# NOTE: the per-bind "allow when locked" key name is the one item I could
+# not fully confirm from the docs; check the Keybinds page "Allow when locked".
+"XF86AudioRaiseVolume"   = { action = "spawn:noctalia msg volume-up", allow_when_locked = true }
+"XF86AudioLowerVolume"   = { action = "spawn:noctalia msg volume-down", allow_when_locked = true }
+"XF86AudioMute"          = { action = "spawn:noctalia msg volume-mute", allow_when_locked = true }
+"XF86AudioMicMute"       = { action = "spawn:noctalia msg mic-mute", allow_when_locked = true }
+"XF86MonBrightnessUp"    = { action = "spawn:noctalia msg brightness-up", allow_when_locked = true }
+"XF86MonBrightnessDown"  = { action = "spawn:noctalia msg brightness-down", allow_when_locked = true }
+
+# --- Workspaces ---
+"Mod+1" = "workspace-switch:1"
+"Mod+2" = "workspace-switch:2"
+"Mod+3" = "workspace-switch:3"
+"Mod+4" = "workspace-switch:4"
+"Mod+5" = "workspace-switch:5"
+"Mod+6" = "workspace-switch:6"
+"Mod+7" = "workspace-switch:7"
+"Mod+8" = "workspace-switch:8"
+"Mod+9" = "workspace-switch:9"
+
+# focus prev/next workspace. These fall back to window focus first; if a
+# pure workspace-prev/next action exists, swap it in (see note below).
+"Mod+I"         = "window-focus-or-workspace-up"
+"Mod+U"         = "window-focus-or-workspace-down"
+"Mod+Page_Up"   = "window-focus-or-workspace-up"
+"Mod+Page_Down" = "window-focus-or-workspace-down"
+
+"Mod+Shift+1" = "column-move-to-workspace:1"
+"Mod+Shift+2" = "column-move-to-workspace:2"
+"Mod+Shift+3" = "column-move-to-workspace:3"
+"Mod+Shift+4" = "column-move-to-workspace:4"
+"Mod+Shift+5" = "column-move-to-workspace:5"
+"Mod+Shift+6" = "column-move-to-workspace:6"
+"Mod+Shift+7" = "column-move-to-workspace:7"
+"Mod+Shift+8" = "column-move-to-workspace:8"
+"Mod+Shift+9" = "column-move-to-workspace:9"
+"Mod+Shift+I"         = "workspace-move-up"
+"Mod+Shift+U"         = "workspace-move-down"
+"Mod+Shift+Page_Up"   = "workspace-move-up"
+"Mod+Shift+Page_Down" = "workspace-move-down"
+
+# --- Window / column management ---
+"Mod+Q"  = { action = "window-close", repeat = false }
+"Mod+H"  = "window-focus-left"
+"Mod+L"  = "window-focus-right"
+"Mod+J"  = "window-focus-down"
+"Mod+K"  = "window-focus-up"
+"Mod+Left"  = "window-focus-left"
+"Mod+Right" = "window-focus-right"
+"Mod+Home" = "column-focus-first"
+"Mod+End"  = "column-focus-last"
+
+"Mod+Shift+H" = "column-move-left"
+"Mod+Shift+L" = "column-move-right"
+"Mod+Shift+J" = "window-move-down"
+"Mod+Shift+K" = "window-move-up"
+
+"Mod+BracketLeft"  = "window-consume-left"
+"Mod+BracketRight" = "window-consume-right"
+
+"Mod+C" = "column-center"
+"Mod+R" = "window-cycle-width"         # switch-preset-column-width
+"Mod+Shift+R" = "window-cycle-height"  # switch-preset-window-height
+"Mod+Equal" = "window-modify-width:+0.1"   # set-column-width "+10%"
+"Mod+Minus" = "window-modify-width:-0.1"
+"Mod+Shift+Equal" = "window-modify-height:+0.1"  # set-window-height "+10%"
+"Mod+Shift+Minus" = "window-modify-height:-0.1"
+
+"Mod+F" = "window-toggle-maximize"          # maximize-column (full column width)
+"Mod+Shift+F" = "window-toggle-fullscreen"  # fullscreen-window
+"Mod+Shift+T" = "window-toggle-floating"    # toggle-window-floating
+"Mod+Shift+V" = "window-focus-switch-floating"
+
+"Mod+Ctrl+Home" = "column-move-to-first"
+"Mod+Ctrl+End"  = "column-move-to-last"
+"Mod+Ctrl+I" = "column-move-to-workspace-previous"
+"Mod+Ctrl+U" = "column-move-to-workspace-next"
+
+# Monitor focus / moves
+"Mod+Ctrl+H" = "output-focus-left"
+"Mod+Ctrl+J" = "output-focus-down"
+"Mod+Ctrl+K" = "output-focus-up"
+"Mod+Ctrl+L" = "output-focus-right"
+"Mod+Ctrl+Left"  = "output-focus-left"
+"Mod+Ctrl+Right" = "output-focus-right"
+"Mod+Shift+Ctrl+H" = "column-move-to-output-left"
+"Mod+Shift+Ctrl+J" = "column-move-to-output-down"
+"Mod+Shift+Ctrl+K" = "column-move-to-output-up"
+"Mod+Shift+Ctrl+L" = "column-move-to-output-right"
+"Mod+Shift+Ctrl+Left"  = "column-move-to-output-left"
+"Mod+Shift+Ctrl+Right" = "column-move-to-output-right"
+
+# Mouse wheel
+"Mod+WheelUp"   = "window-focus-left"
+"Mod+WheelDown" = "window-focus-right"
+"Mod+WheelLeft"  = "window-focus-left"
+"Mod+WheelRight" = "window-focus-right"
+"Mod+Shift+WheelUp"   = "column-move-left"
+"Mod+Shift+WheelDown" = "column-move-right"
+"Mod+Ctrl+WheelLeft"  = "column-move-left"
+"Mod+Ctrl+WheelRight" = "column-move-right"
+"Mod+Ctrl+WheelUp"   = "column-move-to-workspace-previous"
+"Mod+Ctrl+WheelDown" = "column-move-to-workspace-next"
+
+# --- Overview ---
+"Mod+D"   = { action = "overview-toggle", repeat = false }
+"Mod+Tab" = { action = "overview-toggle", repeat = false }
+"Mod+Shift+Slash" = "cheatsheet-toggle"
+
+# --- App shortcuts (Super == Mod here since mod_key = "Super") ---
+"Mod+B" = "spawn:flatpak run app.zen_browser.zen"
+"Mod+E" = "spawn:nautilus"
+"Mod+Period" = "spawn:flatpak run it.mijorus.smile"
+"Mod+Return" = "spawn:ghostty"
+"Mod+S" = "spawn:flatpak run com.valvesoftware.Steam"
+"Mod+Z" = "spawn:flatpak run dev.zed.Zed"
+"Mod+M" = "spawn:flatpak run com.spotify.Client"

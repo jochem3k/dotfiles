@@ -1,0 +1,7 @@
+[include]
+files = [
+  "general.toml",
+  "keybinds.toml",
+  "display.toml",
+  "rules.toml",
+]

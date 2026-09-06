@@ -1,0 +1,37 @@
+# NOTE: header `[[rules]]` is the one element I couldn't confirm verbatim —
+# if validate complains, check the exact table name on the Window Rules page.
+
+# Control panels: half-width columns
+[[rules]]
+match.app_id = '^(gnome-control-center|pavucontrol|nm-connection-editor)$'
+default_width = 0.5
+default_floating = false
+
+# Small utilities: open floating
+[[rules]]
+match.app_id = '^(org\.gnome\.Calculator|gnome-calculator|galculator|blueman-manager|org\.gnome\.Nautilus|xdg-desktop-portal|org\.gnome\.Characters|net\.nokyan\.Resources|it\.mijorus\.smile|dev\.noctalia\.Noctalia)$'
+default_floating = true
+
+# Steam notification toasts: bottom-right, not focused
+[[rules]]
+match.app_id = '^steam$'
+match.title = '^notificationtoasts_\d+_desktop$'
+default_floating = true
+default_focused = false
+default_position = { x = 10, y = 10, anchor = "bottom_right" }
+
+# Zoom always floats
+[[rules]]
+match.app_id = '^zoom$'
+default_floating = true
+
+# Firefox Picture-in-Picture (also floats by default in Umbriel's packaged config)
+[[rules]]
+match.app_id = 'firefox$'
+match.title = '^Picture-in-Picture$'
+default_floating = true
+
+# Wide columns: browsers and Steam take the full width
+[[rules]]
+match.app_id = '^(app\.zen_browser\.zen|steam|helium)$'
+default_width = 1.0

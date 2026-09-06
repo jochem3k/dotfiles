@@ -2,6 +2,7 @@
 files = [
   "general.toml",
   "keybinds.toml",
-  "display.toml",
+  "outputs.toml",
   "rules.toml",
+  "input.toml",
 ]

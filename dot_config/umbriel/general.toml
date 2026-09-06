@@ -1,58 +1,153 @@
 [general]
-autostart = ["noctalia"]      # spawn-at-startup "noctalia"
-mod_key = "Super"             # input mod-key "Super"
-xwayland = true               # xwayland-satellite; must be on PATH
-show_cheatsheet = false       # hotkey-overlay skip-at-startup
+autostart = ["noctalia"]          # spawn-at-startup "noctalia"
+mod_key = "Super"                 # input mod-key "Super"
+xwayland = true                   # xwayland-satellite; must be on PATH
+show_cheatsheet = false           # hotkey-overlay skip-at-startup
+focus_on_activate = false         # Do not let unsolicited requests steal focus
+honor_restored_maximize = false   # Honor restored maximized state
+
+[environment]
+GTK_THEME = "Adwaita:dark"
+QT_QPA_PLATFORMTHEME = "qt5ct"
+
+[workspaces]
+# Each output supports at most 64 workspaces, including empty ones.
+back_and_forth = false                          # Re-select active workspace to switch back
+empty_above = false                             # Keep one empty workspace above active range
 
 [appearance]
-prefer_no_csd = true          # prefer-no-csd
-border_width = 3              # focus-ring width
-corner_radius = 16            # geometry-corner-radius (global in Umbriel)
+prefer_no_csd = true              # prefer-no-csd
+border_width = 3                  # focus-ring width
+corner_radius = 16                # geometry-corner-radius (global in Umbriel)
 drag_opacity = 0.75
 
 [appearance.shadow]
-enabled = true                # layout shadow
+enabled = true                    # layout shadow
 
 [colors]
-insert_hint = "#FFC87F70"     # insert-hint color
+insert_hint = "#FFC87F70"         # insert-hint color
 
 [colors.border]
-focused = "#3584e4"           # focus-ring active-color
-unfocused = "#505050"         # focus-ring inactive-color
+focused = "#3584e4"               # focus-ring active-color
+unfocused = "#505050"             # focus-ring inactive-color
 
 [layout]
-gap = 10                      # layout gaps 10
+gap = 10                          # layout gaps 10
 width_presets = [0.333, 0.5, 0.667]
 
 [layout.scrolling]
-center_focused = false        # center-focused-column "never"
+center_focused = false            # center-focused-column "never"
 
 [layout.struts]
 left = 0
 right = 0
 top = 0
-bottom = 0
+bottom = 0                         # xcursor-size
 
-[input.touchpad]
-tap = true
-natural_scroll = true
-accel_profile = "adaptive"
-sensitivity = 0.17            # ~ niri accel-speed
-scroll_factor = 1.0
-# disable_while_typing / drag were commented or absent in your niri config;
-# Umbriel has disable_while_typing if you want dwt
+[animation]
+enabled = true                                  # Master animation switch
+duration_ms = 250                               # Shared duration, 1-10000 ms
+curve = "easeout"                               # Built-in or registered bezier/spring curve name
 
-[input.mouse]
-accel_profile = "adaptive"
-sensitivity = 0.20
-scroll_factor = 1.0
+# Window opening
+[animation.windows_in]
+enabled = true
+duration_ms = 150
+curve = "easeout"
+style = "popin"                                 # popin, zoom, slide, fade, or none
+scale = 0.85                                    # Popin start scale, 0.1-1.0
+# shader = "shaders/reveal.glsl"      # Replaces the built-in opening style
 
-[input.keyboard]
-repeat_delay = 600            # repeat-delay 600
-repeat_rate = 25               # repeat-rate 25
-numlock_toggle = true          # numlock
-track_layout = "window"        # track-layout "window"
+# Window closing
+[animation.windows_out]
+enabled = true
+duration_ms = 150
+curve = "easeout"
+style = "fade"                                  # fade or slide
+# shader = "shaders/reveal.glsl"
 
-[input.cursor]
-theme = "Adwaita"              # xcursor-theme
-size = 24                      # xcursor-size
+# Window movement, resizing, and floating maximize
+[animation.windows_move]
+enabled = true
+duration_ms = 250
+curve = "snappy"
+# shader = "shaders/squash.glsl"      # Subtle compression and settle during move/resize
+
+# Workspace switching
+[animation.workspaces]
+enabled = true
+duration_ms = 250
+curve = "easeout"
+
+# Overview opening, closing, and row settling
+[animation.overview]
+enabled = true
+duration_ms = 250
+curve = "easeout"
+
+# Scratchpad show, hide, and backdrop
+[animation.scratchpad]
+enabled = false
+duration_ms = 250
+curve = "easeout"
+dim = 0.5                                       # Backdrop dim amount, 0.0-1.0
+blur = false                                    # Requires appearance.blur.enabled
+scale = 0.0                                     # 0 keeps geometry; 0.1-1.0 centers and scales
+maximize = false                                # Maximize to usable-area edges while shown
+fullscreen = false                              # Make the scratchpad window fullscreen while shown
+
+# Focus border color
+[animation.border]
+enabled = false
+duration_ms = 250
+curve = "easeout"
+
+# Unfocused window opacity
+[animation.dim_unfocused]
+enabled = false
+duration_ms = 250
+curve = "easeout"
+dim = 0.0                                       # 0 disables dimming; maximum is 1.0
+
+# Layer-shell surface mapping and unmapping
+[animation.layers]
+enabled = false
+duration_ms = 250
+curve = "easeout"
+
+# Register reusable curves by adding or uncommenting entries below.
+# Documentation: https://docs.noctalia.dev/umbriel/animation/#curves
+
+[animation.beziers]
+# myBezier = [0.05, 0.9, 0.1, 1.0]
+
+[animation.springs]
+# myBounce = { damping = 0.5, stiffness = 200 }
+
+[overview]
+zoom = 0.5                                      # Workspace scale in overview, 0.1-0.75
+# Pinned windows stay hidden until overview closes; visible scratchpads are dismissed.
+# background_blur = true                        # Blur the wallpaper behind overview rows
+# workspace_wallpaper = true                    # Mirror wallpapers inside workspace previews
+shortcuts = false                             # Show keyboard shortcut badges on windows
+# shortcut_keys = "1234567890"                  # Badge keys in preference order
+
+[hot_corners.top_left]
+enabled = true                                  # Open the overview after resting here
+delay_ms = 30                                # 0 activates immediately; maximum is 10000
+action = "overview-toggle"                        # Any normal Umbriel action is accepted
+
+[hot_corners.top_right]
+enabled = false
+delay_ms = 500
+action = "overview-close"
+
+[hot_corners.bottom_left]
+enabled = false
+delay_ms = 500
+action = "overview-toggle"
+
+[hot_corners.bottom_right]
+enabled = false
+delay_ms = 500
+action = "spawn:notify-send 'Bottom right'"

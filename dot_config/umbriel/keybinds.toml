@@ -9,12 +9,15 @@
 # --- Audio / brightness OSDs (work while locked) ---
 # NOTE: the per-bind "allow when locked" key name is the one item I could
 # not fully confirm from the docs; check the Keybinds page "Allow when locked".
-"XF86AudioRaiseVolume"   = { action = "spawn:noctalia msg volume-up", allow_when_locked = true }
-"XF86AudioLowerVolume"   = { action = "spawn:noctalia msg volume-down", allow_when_locked = true }
-"XF86AudioMute"          = { action = "spawn:noctalia msg volume-mute", allow_when_locked = true }
+"XF86AudioRaiseVolume" = "spawn:wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+"XF86AudioLowerVolume" = "spawn:wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+"XF86AudioMute" = "spawn:wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
 "XF86AudioMicMute"       = { action = "spawn:noctalia msg mic-mute", allow_when_locked = true }
-"XF86MonBrightnessUp"    = { action = "spawn:noctalia msg brightness-up", allow_when_locked = true }
-"XF86MonBrightnessDown"  = { action = "spawn:noctalia msg brightness-down", allow_when_locked = true }
+"XF86MonBrightnessUp" = "spawn:brightnessctl set +5%"
+"XF86MonBrightnessDown" = "spawn:brightnessctl set 5%-"
+"XF86AudioPlay" = "spawn:playerctl play-pause"
+"XF86AudioNext" = "spawn:playerctl next"
+"XF86AudioPrev" = "spawn:playerctl previous"
 
 # --- Workspaces ---
 "Mod+1" = "workspace-switch:1"
@@ -31,8 +34,8 @@
 # pure workspace-prev/next action exists, swap it in (see note below).
 "Mod+I"         = "window-focus-or-workspace-up"
 "Mod+U"         = "window-focus-or-workspace-down"
-"Mod+Page_Up"   = "window-focus-or-workspace-up"
-"Mod+Page_Down" = "window-focus-or-workspace-down"
+"Mod+Up"        = "window-focus-or-workspace-up"
+"Mod+Down"      = "window-focus-or-workspace-down"
 
 "Mod+Shift+1" = "column-move-to-workspace:1"
 "Mod+Shift+2" = "column-move-to-workspace:2"
@@ -43,10 +46,8 @@
 "Mod+Shift+7" = "column-move-to-workspace:7"
 "Mod+Shift+8" = "column-move-to-workspace:8"
 "Mod+Shift+9" = "column-move-to-workspace:9"
-"Mod+Shift+I"         = "workspace-move-up"
-"Mod+Shift+U"         = "workspace-move-down"
-"Mod+Shift+Page_Up"   = "workspace-move-up"
-"Mod+Shift+Page_Down" = "workspace-move-down"
+"Mod+Shift+Up" = "window-move-to-workspace-previous"
+"Mod+Shift+Down" = "window-move-to-workspace-next"
 
 # --- Window / column management ---
 "Mod+Q"  = { action = "window-close", repeat = false }
@@ -61,6 +62,8 @@
 
 "Mod+Shift+H" = "column-move-left"
 "Mod+Shift+L" = "column-move-right"
+"Mod+Shift+Left" = "column-move-left"
+"Mod+Shift+Right" = "column-move-right"
 "Mod+Shift+J" = "window-move-down"
 "Mod+Shift+K" = "window-move-up"
 
@@ -110,6 +113,7 @@
 "Mod+Ctrl+WheelRight" = "column-move-right"
 "Mod+Ctrl+WheelUp"   = "column-move-to-workspace-previous"
 "Mod+Ctrl+WheelDown" = "column-move-to-workspace-next"
+"Mod+MouseMiddle" = "overview-toggle"
 
 # --- Overview ---
 "Mod+D"   = { action = "overview-toggle", repeat = false }

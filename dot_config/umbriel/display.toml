@@ -1,12 +1,15 @@
-[output.DP-3]
+[output."GIGA-BYTE TECHNOLOGY CO., LTD. M34WQ 0x00000012"]
 mode = "3440x1440@144"
 position = [0, 0]
 scale = 1
-vrr = "fullscreen"             # niri on-demand=true -> fullscreen-only adaptive sync
-hdr = "auto"                   # your HDR goal: enable for HDR-metadata fullscreen apps
+vrr = "fullscreen"
+tearing = true
+#hdr = "auto"
+min_workspaces = 2
 
 [output.eDP-1]
 mode = "1920x1080@60"
 position = [1280, 0]
 scale = 1
 vrr = "fullscreen"
+min_workspaces = 2

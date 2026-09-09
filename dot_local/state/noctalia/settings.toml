@@ -52,6 +52,7 @@ widget_order = []
 concave_edge_corners = false
 cross_axis_padding = 4
 enabled = true
+launcher_icon = "wave-sine"
 main_axis_padding = 8
 margin_edge = 4
 pinned = [
@@ -206,6 +207,7 @@ settings_show_advanced = false
     compact = true
 
     [shell.panel]
+    launcher_placement = "attached"
     open_near_click_control_center = true
     open_near_click_launcher = true
     session_position = "center"

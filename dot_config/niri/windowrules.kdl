@@ -17,6 +17,14 @@ window-rule {
     default-column-width { proportion 0.5; }
     open-floating false
 }
+
+window-rule {
+    match app-id=r#"^net\.nokyan\.Resources$"#
+    match app-id=r#"^nvidia-settings$"#
+    default-column-width { proportion 0.33; }
+    open-floating false
+}
+
 window-rule {
     match app-id=r#"^org\.gnome\.Calculator$"#
     match app-id=r#"^gnome-calculator$"#
@@ -25,7 +33,7 @@ window-rule {
     match app-id=r#"^org\.gnome\.Nautilus$"#
     match app-id=r#"^xdg-desktop-portal$"#
     match app-id=r#"^org\.gnome\.Characters$"#
-    match app-id=r#"^net\.nokyan\.Resources$"#
+    // match app-id=r#"^net\.nokyan\.Resources$"#
     match app-id=r#"^it\.mijorus\.smile$"#
     match app-id=r#"^dev\.noctalia\.Noctalia$"#
     open-floating true

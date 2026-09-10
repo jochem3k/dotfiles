@@ -34,8 +34,8 @@
       "type": "command",
       "key": "  󰡨 Image     ",
       "keyColor": "blue",
-      "text": "line=$(rpm-ostree status | grep '●'); clean=$(echo \"$line\" | sed -E 's#^.*(://|registry:)##' | sed -E 's#[^/]*/[^/]*/##'); if echo \"$line\" | grep -q 'unverified'; then echo \"$clean 🔓\"; else echo \"$clean 🔐\"; fi",
-      "shell": "/bin/bash",
+      "text": "line=$(rpm-ostree status 2>/dev/null | grep '●' | head -n1); raw=$(echo \"$line\" | sed -E 's/.*Booted image:[[:space:]]*//'); clean=$(echo \"$raw\" | sed -E 's#[^/]*/[^/]*/##'); if grep -qE 'sigstoreSigned|signedBy' /etc/containers/policy.json 2>/dev/null; then echo \"$clean 🔐\"; else echo \"$clean 🔓\"; fi",
+      "shell": "/bin/bash"
     },
     {
       "type": "command",

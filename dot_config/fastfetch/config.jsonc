@@ -48,8 +48,8 @@
       "type": "command",
       "key": "  󰣛 OS        ",
       "keyColor": "blue",
-      "text": "echo \"Blueshift $(awk -F= '/VERSION_ID/ {print $2}' /etc/os-release | tr -d '\"') (Fedora Atomic) $(uname -m)\"",
-      "shell": "/bin/bash",
+      "text": "echo \"Blueshift $(awk -F= '/VERSION_ID/ {print $2}' /etc/os-release | tr -d '\"') $(uname -m)\"",
+      "shell": "/bin/bash"
     },
     {
       "type": "kernel",

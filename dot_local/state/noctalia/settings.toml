@@ -257,11 +257,13 @@ show_label = false
 [widget.cat_2]
 capsule_opacity = 0.47999999999999998
 capsule_padding = 3
+cat_size = 30
+enable_scroll = false
 type = "dotnetrob/cat:cat"
 
     [widget.cat_2.actions]
     left = "panel-toggle launcher"
-    right = "exec panel-toggle dotnetrob/cat:panel"
+    right = "panel-toggle dotnetrob/cat:panel"
 
 [widget.clock]
 format = "{:%a %b %d}  {:%H:%M}"

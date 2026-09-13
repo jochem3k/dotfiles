@@ -24,7 +24,7 @@ order = [ "Panel" ]
     font_family = "Adwaita Sans"
     margin_ends = 0
     radius = 0
-    start = [ "launcher", "spacer_15", "workspaces", "spacer_20", "active_window" ]
+    start = [ "cat_2", "launcher", "spacer_15", "workspaces", "spacer_20", "active_window" ]
 
         [bar.Panel.dead_zone.actions]
         middle = "volume-mute"
@@ -192,8 +192,11 @@ widget_order = [ "lockscreen-login-box@WL-1", "lockscreen-login-box@DP-3", "lock
 compositor = "niri"
 niri_config = "/var/home/jochem/.config/niri/config.kdl"
 
+[plugin_settings."noctalia/wallhaven"]
+download_dir = "/usr/share/backgrounds/custom"
+
 [plugins]
-enabled = [ "icefish/phone-connect" ]
+enabled = [ "icefish/phone-connect", "dotnetrob/cat", "liamwh/emoji-picker" ]
 
 [shell]
 font_family = "Adwaita Sans"
@@ -251,11 +254,21 @@ type = "icefish/phone-connect:bar"
 [widget.brightness]
 show_label = false
 
+[widget.cat_2]
+capsule_opacity = 0.47999999999999998
+capsule_padding = 3
+type = "dotnetrob/cat:cat"
+
+    [widget.cat_2.actions]
+    left = "panel-toggle launcher"
+    right = "exec panel-toggle dotnetrob/cat:panel"
+
 [widget.clock]
 format = "{:%a %b %d}  {:%H:%M}"
 timezone = "Europe/Amsterdam"
 
 [widget.launcher]
+enabled = false
 glyph = "wave-sine"
 
 [widget.media]

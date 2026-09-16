@@ -49,11 +49,12 @@ widget_order = []
     [desktop_widgets.widget]
 
 [dock]
+background_opacity = 0.99999997764825821
 concave_edge_corners = false
 cross_axis_padding = 4
 enabled = true
 launcher_icon = "wave-sine"
-main_axis_padding = 8
+magnification_scale = 2.0
 margin_edge = 4
 pinned = [
     "org.gnome.Nautilus",
@@ -65,6 +66,7 @@ pinned = [
     "dev.vencord.Vesktop",
     "com.spotify.Client"
 ]
+radius = 18
 reserve_space = false
 show_dots = true
 smart_auto_hide = true
@@ -311,5 +313,5 @@ show_label = false
 focused_color = "on_primary"
 hide_when_empty = true
 occupied_color = "outline"
-pill_scale = 0.90000000000000002
+pill_scale = 0.80000000000000004
 show_labels = false

@@ -52,7 +52,6 @@ widget_order = []
 background_opacity = 0.99999997764825821
 concave_edge_corners = false
 cross_axis_padding = 4
-enabled = true
 launcher_icon = "wave-sine"
 magnification_scale = 2.0
 margin_edge = 4

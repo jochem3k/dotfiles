@@ -259,6 +259,7 @@ capsule_opacity = 0.47999999999999998
 capsule_padding = 3
 cat_size = 30
 enable_scroll = false
+enabled = false
 type = "dotnetrob/cat:cat"
 
     [widget.cat_2.actions]
@@ -293,6 +294,7 @@ vpn_status = "both"
 hide_when_no_unread = true
 
 [widget.spacer_15]
+enabled = false
 length = 15
 type = "spacer"
 
@@ -309,4 +311,5 @@ show_label = false
 focused_color = "on_primary"
 hide_when_empty = true
 occupied_color = "outline"
-style = "minimal"
+pill_scale = 0.90000000000000002
+show_labels = false

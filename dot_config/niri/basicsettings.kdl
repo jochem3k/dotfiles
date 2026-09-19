@@ -12,6 +12,7 @@ animations {
 }
 
 layout {
+    always-center-single-column
     shadow {
     on
     }

@@ -4,11 +4,11 @@
 
 # Font family to use
 # Options: String: font name
-font-family = Adwaita Mono Nerd
+font-family = "JetBrains Mono"
 
 # Color theme name or path
 # Options: String
-theme = "dankcolors"
+theme = "Adwaita Dark"
 
 # Window height in cells
 # Options: Number

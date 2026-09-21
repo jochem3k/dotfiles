@@ -15,3 +15,8 @@ name='Resources'
 binding='<Super>period'
 command='flatpak run org.gnome.Characters'
 name='Characters'
+
+[custom-keybindings/custom3]
+binding='<Super>e'
+command='nautilus'
+name='Nautilus'

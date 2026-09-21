@@ -1,0 +1,17 @@
+[/]
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/']
+
+[custom-keybindings/custom0]
+binding='<Super>Return'
+command='ghostty'
+name='Ghostty'
+
+[custom-keybindings/custom1]
+binding='<Control>Escape'
+command='flatpak run net.nokyan.Resources'
+name='Resources'
+
+[custom-keybindings/custom2]
+binding='<Super>period'
+command='flatpak run org.gnome.Characters'
+name='Characters'

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# custom-keybindings.dconf hash: {{ include "dot_config/dconf/custom-keybindings.dconf" | sha256sum }}
+dconf load /org/gnome/settings-daemon/plugins/media-keys/ < "$HOME/.config/dconf/custom-keybindings.dconf"

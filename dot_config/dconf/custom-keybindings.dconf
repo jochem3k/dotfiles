@@ -7,7 +7,7 @@ command='ghostty'
 name='Ghostty'
 
 [custom-keybindings/custom1]
-binding='<Control>Escape'
+binding='<Ctrl>Escape'
 command='flatpak run net.nokyan.Resources'
 name='Resources'
 

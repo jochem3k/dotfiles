@@ -17,6 +17,6 @@ command='flatpak run org.gnome.Characters'
 name='Characters'
 
 [custom-keybindings/custom3]
-binding='<Super>e'
+binding='<Super>E'
 command='nautilus'
 name='Nautilus'

@@ -72,6 +72,11 @@
       "keyColor": "cyan",
     },
     {
+      "type": "de",
+      "key": "  󰕮 DE        ",
+      "keyColor": "cyan",
+    },
+    {
       "type": "wm",
       "key": "   WM        ",
       "keyColor": "cyan",

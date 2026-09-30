@@ -20,3 +20,8 @@ name='Characters'
 binding='<Super>E'
 command='nautilus'
 name='Nautilus'
+
+[custom-keybindings/custom4]
+binding='<Super>B'
+command='flatpak run app.zen_browser.zen'
+name='Zen'

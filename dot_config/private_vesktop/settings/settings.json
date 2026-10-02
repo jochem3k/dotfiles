@@ -4,9 +4,7 @@
     "useQuickCss": true,
     "themeLinks": [],
     "eagerPatches": false,
-    "enabledThemes": [
-        "dank-discord.css"
-    ],
+    "enabledThemes": [],
     "enableReactDevtools": false,
     "frameless": false,
     "transparent": false,
@@ -240,9 +238,6 @@
             "enabled": false
         },
         "KeepCurrentChannel": {
-            "enabled": false
-        },
-        "LastFMRichPresence": {
             "enabled": false
         },
         "LoadingQuotes": {
@@ -516,7 +511,9 @@
             "enabled": false
         },
         "WebKeybinds": {
-            "enabled": true
+            "enabled": true,
+            "showNavigationButtons": true,
+            "overrideCommonKeybinds": true
         },
         "WebScreenShareFixes": {
             "enabled": true
@@ -565,6 +562,24 @@
         },
         "WebContextMenus": {
             "enabled": true
+        },
+        "MusicRichPresence": {
+            "enabled": false
+        },
+        "AddAttachments": {
+            "enabled": false
+        },
+        "TenorGifSearch": {
+            "enabled": false
+        },
+        "ContextMenuAPI": {
+            "enabled": true
+        },
+        "FixDiscordCss": {
+            "enabled": true
+        },
+        "NoticesAPI": {
+            "enabled": true
         }
     },
     "notifications": {
@@ -577,7 +592,7 @@
         "authenticated": false,
         "url": "https://api.vencord.dev/",
         "settingsSync": false,
-        "settingsSyncVersion": 1782658820840
+        "settingsSyncVersion": 1790969934561
     },
     "uiElements": {
         "chatBarButtons": {},

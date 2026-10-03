@@ -1,5 +1,6 @@
 [/]
-custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/']
+volume-step=6
 
 [custom-keybindings/custom0]
 binding='<Super>Return'
@@ -17,11 +18,16 @@ command='flatpak run org.gnome.Characters'
 name='Characters'
 
 [custom-keybindings/custom3]
-binding='<Super>E'
-command='nautilus'
-name='Nautilus'
-
-[custom-keybindings/custom4]
-binding='<Super>B'
+binding='<Super>b'
 command='flatpak run app.zen_browser.zen'
 name='Zen'
+
+[custom-keybindings/custom4]
+binding='<Super>z'
+command='flatpak run dev.zed.Zed'
+name='Zed'
+
+[custom-keybindings/custom5]
+binding='<Super>e'
+command='nautilus'
+name='Nautilus'

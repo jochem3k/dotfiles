@@ -8,7 +8,7 @@ font-family = "JetBrains Mono"
 
 # Color theme name or path
 # Options: String
-theme = "Adwaita Dark"
+theme = rietveld-black
 
 # Window height in cells
 # Options: Number
@@ -78,3 +78,4 @@ keybind = ctrl+super+]=unbind
 # Options: trigger=action
 keybind = ctrl+shift+w=close_surface
 
+#gtk-titlebar = false  # disabled by ghostty-config: back to the default

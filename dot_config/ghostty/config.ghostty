@@ -8,7 +8,7 @@ font-family = "JetBrains Mono"
 
 # Color theme name or path
 # Options: String
-theme = vkhutemas-black
+theme = "Adwaita Dark"
 
 # Window height in cells
 # Options: Number
@@ -19,7 +19,6 @@ window-height = 50
 window-width = 130
 
 # Enable VSync
-# Options: Boolean
 window-vsync = true
 
 # Confirm before closing
@@ -77,5 +76,3 @@ keybind = ctrl+super+]=unbind
 # Custom keybinding
 # Options: trigger=action
 keybind = ctrl+shift+w=close_surface
-
-#gtk-titlebar = false  # disabled by ghostty-config: back to the default

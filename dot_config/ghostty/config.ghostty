@@ -8,7 +8,7 @@ font-family = "JetBrains Mono"
 
 # Color theme name or path
 # Options: String
-theme = rietveld-black
+theme = vkhutemas-black
 
 # Window height in cells
 # Options: Number

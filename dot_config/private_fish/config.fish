@@ -5,17 +5,7 @@
 set -g fish_greeting ""
 
 # ==============================================================================
-# --- 1. Dynamic Homebrew Initialization ---
-# ==============================================================================
-# Automatically detects and hooks Linuxbrew on your Fedora Atomic images, 
-# while sleeping completely unnoticed if you are running on a bare Arch setup.
-
-#if test -d /home/linuxbrew/.linuxbrew
-#    /home/linuxbrew/.linuxbrew/bin/brew shellenv | source
-#end
-
-# ==============================================================================
-# --- 2. Environment Variables ---
+# --- 1. Environment Variables ---
 # ==============================================================================
 set -gx EDITOR "fresh"
 set -gx VISUAL "fresh"
@@ -26,18 +16,16 @@ if type -q vivid
 end
 
 # ==============================================================================
-# --- 3. Tool Initialization ---
+# --- 2. Tool Initialization ---
 # ==============================================================================
 # Initialize Zoxide using Fish-native piping mechanics
 if type -q zoxide
     zoxide init fish --cmd cd | source
 end
 
-# Append third-party utilities cleanly to your active user path
-fish_add_path /home/jochem/.spicetify
 
 # ==============================================================================
-# --- 4. Aliases ---
+# --- 3. Aliases ---
 # ==============================================================================
 # Core CLI Replacements
 alias f='fresh'
@@ -54,7 +42,7 @@ alias rm='rm -I --preserve-root'
 alias mkdir='mkdir -p'
 
 # ==============================================================================
-# --- 5. Ghostty Architecture ---
+# --- 4. Ghostty Architecture ---
 # ==============================================================================
 # Ensures terminfo rules pass securely when connecting to remote hosts via Ghostty
 if string match -q "*ghostty*" $TERM
@@ -62,7 +50,7 @@ if string match -q "*ghostty*" $TERM
 end
 
 # ==============================================================================
-# --- 6. Interactive Visuals ---
+# --- 5. Interactive Visuals ---
 # ==============================================================================
 if status is-interactive
     if type -q fastfetch

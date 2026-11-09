@@ -9,16 +9,16 @@ set -g fish_greeting ""
 # ==============================================================================
 # Automatically detects and hooks Linuxbrew on your Fedora Atomic images, 
 # while sleeping completely unnoticed if you are running on a bare Arch setup.
-if test -d /home/linuxbrew/.linuxbrew
-    /home/linuxbrew/.linuxbrew/bin/brew shellenv | source
-end
+
+#if test -d /home/linuxbrew/.linuxbrew
+#    /home/linuxbrew/.linuxbrew/bin/brew shellenv | source
+#end
 
 # ==============================================================================
 # --- 2. Environment Variables ---
 # ==============================================================================
 set -gx EDITOR "fresh"
 set -gx VISUAL "fresh"
-set -gx BAT_THEME "Catppuccin Mocha"
 
 # Core dynamic terminal coloring engine wrapper
 if type -q vivid
@@ -54,19 +54,12 @@ alias rm='rm -I --preserve-root'
 alias mkdir='mkdir -p'
 
 # ==============================================================================
-# --- 5. SSH & Ghostty Architecture ---
+# --- 5. Ghostty Architecture ---
 # ==============================================================================
 # Ensures terminfo rules pass securely when connecting to remote hosts via Ghostty
 if string match -q "*ghostty*" $TERM
     alias ssh="env TERM=xterm-256color ssh"
 end
-
-# Remote Infrastructure Routing
-alias d0='ssh docker@192.168.2.250'
-alias hy='ssh hytale@192.168.2.240'
-alias pmb='ssh protonmail-bridge@192.168.2.211'
-alias tailsc='ssh tailscale@192.168.2.213'
-alias dns='ssh dns@192.168.2.253'
 
 # ==============================================================================
 # --- 6. Interactive Visuals ---

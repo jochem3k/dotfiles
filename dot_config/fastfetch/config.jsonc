@@ -4,17 +4,17 @@
   // ==========================================
   // ACTIVE BLUESHIFT LOGO
   // ==========================================
-  "logo": {
-    "source": "~/.config/fastfetch/blueshift.txt",
-    "color": {
-      "1": "blue",
-    },
-    "padding": {
-      "top": 1,
-      "left": 2,
-      "right": 4,
-    },
-  },
+  //"logo": {
+  //  "source": "~/.config/fastfetch/blueshift.txt",
+  //  "color": {
+  //    "1": "blue",
+  //  },
+  //  "padding": {
+  //    "top": 1,
+  //    "left": 2,
+  //    "right": 4,
+  //  },
+  //},
 
   "display": {
     // We use a clean chevron with explicit spacing so it never glues to values

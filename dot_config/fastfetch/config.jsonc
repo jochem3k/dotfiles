@@ -26,14 +26,8 @@
       "type": "command",
       "key": "  󰃭 Build     ",
       "keyColor": "blue",
-      "text": "ts=$(cat /usr/share/calx/build-timestamp 2>/dev/null); if [ -n \"$ts\" ]; then date -d \"$ts\" +'%b %d %Y'; else echo 'unknown'; fi",
+      "text": "ts=$(cat /usr/share/calx/build-timestamp 2>/dev/null); b=$(if [ -n \"$ts\" ]; then date -d \"$ts\" +'%b %d %Y'; else echo 'unknown'; fi); s=$(rpm-ostree status --json 2>/dev/null | python3 -c \"import sys, json; d = json.load(sys.stdin)['deployments']; digest = d[0].get('container-image-reference-digest', '').removeprefix('sha256:') or d[0]['checksum']; print('staged (reboot pending)' if d[0].get('staged') else digest[:12] + ' (up to date)')\" 2>/dev/null); echo \"$b · $s\"",
       "shell": "/bin/bash"
-    },
-    {
-      "type": "command",
-      "key": "  󰏗 Bootc     ",
-      "keyColor": "blue",
-      "text": "rpm-ostree status --json | python3 -c \"import sys, json; d = json.load(sys.stdin)['deployments']; digest = d[0].get('container-image-reference-digest', '').removeprefix('sha256:') or d[0]['checksum']; print('staged (reboot pending)' if d[0].get('staged') else digest[:12] + ' (up to date)')\""
     },
     {
       "type": "command",

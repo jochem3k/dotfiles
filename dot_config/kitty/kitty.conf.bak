@@ -1,0 +1,55 @@
+# Appearance
+font_family      JetBrains Mono
+bold_font        auto
+italic_font      auto
+bold_italic_font auto
+font_size        11.0
+include themes/Adwaita-Dark.conf
+remember_window_size  no
+initial_window_width  170c
+initial_window_height 50c
+sync_to_monitor      yes
+window_padding_width 8
+hide_window_decorations titlebar-only
+
+# Beahviour
+strip_trailing_spaces smart
+paste_actions         quote-urls-at-prompt,confirm
+confirm_os_window_close 2
+notify_on_cmd_finish invisible 10.0
+
+
+# Layouts
+enabled_layouts splits,stack
+
+
+# Keybindings
+
+# --- Split Creation ---
+# Auto-split along the larger dimension (inheriting working directory)
+map ctrl+shift+enter launch --location=split --cwd=current
+
+# Explicit vertical / horizontal splits
+map ctrl+shift+d     launch --location=vsplit --cwd=current
+map ctrl+shift+s     launch --location=hsplit --cwd=current
+
+# --- Split Navigation ---
+# Cycle adjacent splits
+map ctrl+shift+[     previous_window
+map ctrl+shift+]     next_window
+
+# --- Split Utility & Resizing ---
+# Temporarily maximize active split, then restore (switches to stack layout)
+map ctrl+shift+z     toggle_layout stack
+
+# Reset all split proportions evenly
+map ctrl+shift+=     layout_action equalize
+
+# Resize active split (cells per press)
+map ctrl+alt+left    resize_window narrower 2
+map ctrl+alt+right   resize_window wider 2
+map ctrl+alt+up      resize_window taller 2
+map ctrl+alt+down    resize_window shorter 2
+
+# Close focused split surface
+map ctrl+shift+w     close_window

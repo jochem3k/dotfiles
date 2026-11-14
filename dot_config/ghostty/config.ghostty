@@ -14,6 +14,8 @@ clipboard-paste-protection = true
 clipboard-paste-bracketed-safe = true
 confirm-close-surface = true
 desktop-notifications = true
+gtk-single-instance = true
+
 
 # Keybindings
 # --- Split Creation ---

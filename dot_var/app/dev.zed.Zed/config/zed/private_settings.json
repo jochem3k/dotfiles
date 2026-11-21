@@ -7,41 +7,39 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "cli_default_open_behavior": "existing_window",
-  "project_panel": {
+  "search": {
+    "button": false
+  },
+  "diagnostics": {
+    "button": false
+  },
+  "global_lsp_settings": {
+    "button": false
+  },
+  "debugger": {
+    "button": false
+  },
+  "terminal": {
     "dock": "left"
   },
+  "window_title_format": "${projectName}${separator}${fileName}",
+  "cli_default_open_behavior": "existing_window",
+  "ui_font_family": "Adwaita Sans",
+  "buffer_font_family": "Adwaita Mono",
   "outline_panel": {
-    "dock": "left"
+    "button": false
   },
   "collaboration_panel": {
-    "dock": "left"
-  },
-  "git_panel": {
-    "tree_view": true,
-    "dock": "right"
+    "button": false
   },
   "agent": {
-    "dock": "right",
-    "default_model": {
-      "provider": "openrouter",
-      "model": "google/gemini-3.1-flash-lite",
-      "enable_thinking": true
-    },
+    "button": false,
     "favorite_models": [],
     "model_parameters": []
   },
-  "buffer_font_family": "Adwaita Mono",
-  "ui_font_family": "Adwaita Sans",
-  "icon_theme": "Colored Zed Icons Theme Dark",
-  "telemetry": {
-    "diagnostics": false,
-    "metrics": false
+  "project_panel": {
+    "dock": "right"
   },
-  "session": {
-    "trust_all_worktrees": true
-  },
-  "base_keymap": "VSCode",
   "ui_font_size": 16,
   "buffer_font_size": 15,
   "theme": {
